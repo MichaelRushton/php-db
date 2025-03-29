@@ -1,0 +1,27 @@
+{
+    "name": "michaelrushton/db",
+    "description": "A library to extend https://github.com/MichaelRushton/php-sql with a PDO wrapper.",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "michaelrushton/sql": "dev-main"
+    },
+    "autoload": {
+        "psr-4": {
+            "MichaelRushton\\DB\\": "src/"
+        }
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
