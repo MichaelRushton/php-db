@@ -3,7 +3,7 @@ set -e
 
 trap "exit" INT
 
-for version in 8.2 8.3 8.4; do
+for version in 8.3 8.4; do
 
   image=michaelrushton/php-db:php$version
 
