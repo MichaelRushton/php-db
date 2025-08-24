@@ -10,5 +10,5 @@ use MichaelRushton\SQL\Statements\Insert as StatementsInsert;
 
 class Insert extends StatementsInsert implements InsertInterface
 {
-  use Connection;
+    use Connection;
 }

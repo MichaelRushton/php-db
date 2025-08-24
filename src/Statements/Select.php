@@ -10,5 +10,5 @@ use MichaelRushton\SQL\Statements\Select as StatementsSelect;
 
 class Select extends StatementsSelect implements SelectInterface
 {
-  use Connection;
+    use Connection;
 }

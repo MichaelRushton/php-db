@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/MichaelRushton/php-sql.git",
-                "reference": "70a479d4385a11c43f940b35382099b44a8f4ba6"
+                "reference": "a1e10ae041772760ffa80397ccccb6e3e31bf619"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MichaelRushton/php-sql/zipball/70a479d4385a11c43f940b35382099b44a8f4ba6",
-                "reference": "70a479d4385a11c43f940b35382099b44a8f4ba6",
+                "url": "https://api.github.com/repos/MichaelRushton/php-sql/zipball/a1e10ae041772760ffa80397ccccb6e3e31bf619",
+                "reference": "a1e10ae041772760ffa80397ccccb6e3e31bf619",
                 "shasum": ""
             },
             "require": {
@@ -42,7 +42,7 @@
                 "issues": "https://github.com/MichaelRushton/php-sql/issues",
                 "source": "https://github.com/MichaelRushton/php-sql/tree/main"
             },
-            "time": "2025-08-23T20:29:41+00:00"
+            "time": "2025-08-24T13:06:22+00:00"
         }
     ],
     "packages-dev": [

@@ -7,31 +7,28 @@ use MichaelRushton\DB\Driver;
 use MichaelRushton\DB\LazyConnection;
 use MichaelRushton\SQL\SQL;
 
-test("connect", function ()
-{
+test("connect", function () {
 
-  expect(Driver::SQLite->connect())
-  ->toBeInstanceOf(Connection::class);
+    expect(Driver::SQLite->connect())
+    ->toBeInstanceOf(Connection::class);
 
 });
 
-test("lazy connect", function ($driver)
-{
+test("lazy connect", function ($driver) {
 
-  expect($connection = $driver->lazyConnect())
-  ->toBeInstanceOf(LazyConnection::class);
+    expect($connection = $driver->lazyConnect())
+    ->toBeInstanceOf(LazyConnection::class);
 
-  expect($connection->driver())
-  ->toBe($driver);
+    expect($connection->driver())
+    ->toBe($driver);
 
 })
 ->with(Driver::cases());
 
-test("dsn", function ($driver, $config, $dsn)
-{
+test("dsn", function ($driver, $config, $dsn) {
 
-  expect($driver->dsn($config))
-  ->toBe($dsn);
+    expect($driver->dsn($config))
+    ->toBe($dsn);
 
 })
 ->with([
@@ -92,11 +89,10 @@ test("dsn", function ($driver, $config, $dsn)
   ],
 ]);
 
-test("sql", function ($driver, $sql)
-{
+test("sql", function ($driver, $sql) {
 
-  expect($driver->sql())
-  ->toBe($sql);
+    expect($driver->sql())
+    ->toBe($sql);
 
 })
 ->with([

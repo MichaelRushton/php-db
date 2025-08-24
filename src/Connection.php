@@ -24,196 +24,177 @@ use Throwable;
 
 class Connection implements ConnectionInterface
 {
-
-  public function __construct(
-    public readonly DriverInterface $driver,
-    public readonly PDO $pdo
-  ) {}
-
-  public function driver(): DriverInterface
-  {
-    return $this->driver;
-  }
-
-  public function pdo(): PDO
-  {
-    return $this->pdo;
-  }
-
-  public function exec(string $statement): int|false
-  {
-    return $this->pdo()->exec($statement);
-  }
-
-  public function query(
-    string $query,
-    ?int $fetchMode = null,
-    mixed ...$args
-  ): PDOStatement|false
-  {
-    return $this->pdo()->query($query, $fetchMode, ...$args);
-  }
-
-  public function prepare(string $query): PDOStatement|false
-  {
-    return $this->pdo()->prepare($query);
-  }
-
-  public function execute(
-    string $query,
-    ?array $params = null
-  ): PDOStatement|false
-  {
-
-    if (!$stmt = $this->prepare($query))
-    {
-      return false;
+    public function __construct(
+        public readonly DriverInterface $driver,
+        public readonly PDO $pdo
+    ) {
     }
 
-    foreach ((array) $params as $i => $value)
+    public function driver(): DriverInterface
     {
-
-      $stmt->bindValue($i + 1, $value, match (gettype($value))
-      {
-        "boolean" => PDO::PARAM_BOOL,
-        "integer" => PDO::PARAM_INT,
-        "NULL" => PDO::PARAM_NULL,
-        default => PDO::PARAM_STR,
-      });
-
+        return $this->driver;
     }
 
-    if (!$stmt->execute())
+    public function pdo(): PDO
     {
-      return false;
+        return $this->pdo;
     }
 
-    return $stmt;
-
-  }
-
-  public function fetch(
-    string $query,
-    ?array $params = null,
-    int $mode = PDO::FETCH_DEFAULT
-  ): mixed
-  {
-
-    if (!$stmt = $this->execute($query, $params))
+    public function exec(string $statement): int|false
     {
-      return false;
+        return $this->pdo()->exec($statement);
     }
 
-    return $stmt->fetch($mode);
-
-  }
-
-  public function fetchAll(
-    string $query,
-    ?array $params = null,
-    int $mode = PDO::FETCH_DEFAULT,
-    mixed ...$args
-  ): array|false
-  {
-
-    if (!$stmt = $this->execute($query, $params))
-    {
-      return false;
+    public function query(
+        string $query,
+        ?int $fetchMode = null,
+        mixed ...$args
+    ): PDOStatement|false {
+        return $this->pdo()->query($query, $fetchMode, ...$args);
     }
 
-    return $stmt->fetchAll($mode, ...$args);
-
-  }
-
-  public function fetchColumn(
-    string $query,
-    ?array $params = null,
-    int $column = 0
-  ): mixed
-  {
-
-    if (!$stmt = $this->execute($query, $params))
+    public function prepare(string $query): PDOStatement|false
     {
-      return false;
+        return $this->pdo()->prepare($query);
     }
 
-    return $stmt->fetchColumn($column);
+    public function execute(
+        string $query,
+        ?array $params = null
+    ): PDOStatement|false {
 
-  }
+        if (!$stmt = $this->prepare($query)) {
+            return false;
+        }
 
-  public function fetchObject(
-    string $query,
-    ?array $params = null,
-    ?string $class = "stdClass",
-    array $constructorArgs = []
-  ): object|false
-  {
+        foreach ((array) $params as $i => $value) {
 
-    if (!$stmt = $this->execute($query, $params))
-    {
-      return false;
-    }
+            $stmt->bindValue($i + 1, $value, match (gettype($value)) {
+                "boolean" => PDO::PARAM_BOOL,
+                "integer" => PDO::PARAM_INT,
+                "NULL" => PDO::PARAM_NULL,
+                default => PDO::PARAM_STR,
+            });
 
-    return $stmt->fetchObject($class, $constructorArgs);
+        }
 
-  }
+        if (!$stmt->execute()) {
+            return false;
+        }
 
-  public function transaction(Closure $callback): bool
-  {
-
-    $this->pdo()->beginTransaction();
-
-    try
-    {
-
-      $callback($this);
-
-      return $this->pdo()->commit();
+        return $stmt;
 
     }
 
-    catch (Throwable $e)
-    {
+    public function fetch(
+        string $query,
+        ?array $params = null,
+        int $mode = PDO::FETCH_DEFAULT
+    ): mixed {
 
-      $this->pdo()->rollBack();
+        if (!$stmt = $this->execute($query, $params)) {
+            return false;
+        }
 
-      throw $e;
+        return $stmt->fetch($mode);
 
     }
 
+    public function fetchAll(
+        string $query,
+        ?array $params = null,
+        int $mode = PDO::FETCH_DEFAULT,
+        mixed ...$args
+    ): array|false {
 
-  }
+        if (!$stmt = $this->execute($query, $params)) {
+            return false;
+        }
 
-  public function delete(): DeleteInterface
-  {
-    return new Delete($this, $this->driver()->sql());
-  }
+        return $stmt->fetchAll($mode, ...$args);
 
-  public function insert(): InsertInterface
-  {
-    return new Insert($this, $this->driver()->sql());
-  }
-
-  public function replace(): ReplaceInterface
-  {
-
-    if (in_array($driver = $this->driver(), [Driver::PostgreSQL, Driver::SQLServer]))
-    {
-      throw new BadMethodCallException;
     }
 
-    return new Replace($this, $driver->sql());
+    public function fetchColumn(
+        string $query,
+        ?array $params = null,
+        int $column = 0
+    ): mixed {
 
-  }
+        if (!$stmt = $this->execute($query, $params)) {
+            return false;
+        }
 
-  public function select(): SelectInterface
-  {
-    return new Select($this, $this->driver()->sql());
-  }
+        return $stmt->fetchColumn($column);
 
-  public function update(): UpdateInterface
-  {
-    return new Update($this, $this->driver()->sql());
-  }
+    }
+
+    public function fetchObject(
+        string $query,
+        ?array $params = null,
+        ?string $class = "stdClass",
+        array $constructorArgs = []
+    ): object|false {
+
+        if (!$stmt = $this->execute($query, $params)) {
+            return false;
+        }
+
+        return $stmt->fetchObject($class, $constructorArgs);
+
+    }
+
+    public function transaction(Closure $callback): bool
+    {
+
+        $this->pdo()->beginTransaction();
+
+        try {
+
+            $callback($this);
+
+            return $this->pdo()->commit();
+
+        } catch (Throwable $e) {
+
+            $this->pdo()->rollBack();
+
+            throw $e;
+
+        }
+
+
+    }
+
+    public function delete(): DeleteInterface
+    {
+        return new Delete($this, $this->driver()->sql());
+    }
+
+    public function insert(): InsertInterface
+    {
+        return new Insert($this, $this->driver()->sql());
+    }
+
+    public function replace(): ReplaceInterface
+    {
+
+        if (in_array($driver = $this->driver(), [Driver::PostgreSQL, Driver::SQLServer])) {
+            throw new BadMethodCallException();
+        }
+
+        return new Replace($this, $driver->sql());
+
+    }
+
+    public function select(): SelectInterface
+    {
+        return new Select($this, $this->driver()->sql());
+    }
+
+    public function update(): UpdateInterface
+    {
+        return new Update($this, $this->driver()->sql());
+    }
 
 }

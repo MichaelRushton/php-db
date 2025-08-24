@@ -8,14 +8,13 @@ use SensitiveParameter;
 
 abstract class SQLite
 {
+    public static function dsn(#[SensitiveParameter] array $config = []): string
+    {
 
-  public static function dsn(#[SensitiveParameter] array $config = []): string
-  {
+        $database = $config["database"] ?? "";
 
-    $database = $config["database"] ?? "";
+        return "sqlite:$database";
 
-    return "sqlite:$database";
-
-  }
+    }
 
 }

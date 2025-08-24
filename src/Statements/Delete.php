@@ -10,5 +10,5 @@ use MichaelRushton\SQL\Statements\Delete as StatementsDelete;
 
 class Delete extends StatementsDelete implements DeleteInterface
 {
-  use Connection;
+    use Connection;
 }

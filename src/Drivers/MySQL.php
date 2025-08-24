@@ -8,34 +8,32 @@ use SensitiveParameter;
 
 abstract class MySQL
 {
-
-  public static function dsn(#[SensitiveParameter] array $config = []): string
-  {
-
-    foreach ([
-      "host",
-      "port",
-      "dbname",
-      "unix_socket",
-      "charset"
-    ] as $key)
+    public static function dsn(#[SensitiveParameter] array $config = []): string
     {
 
-      $config[$key] ??= "";
+        foreach ([
+          "host",
+          "port",
+          "dbname",
+          "unix_socket",
+          "charset"
+        ] as $key) {
 
-      $$key = $config[$key] ? "$key={$config[$key]}" : "";
+            $config[$key] ??= "";
+
+            $$key = $config[$key] ? "$key={$config[$key]}" : "";
+
+        }
+
+        $dsn = implode(";", array_filter([
+          $unix_socket ?: $host,
+          $unix_socket ? "" : $port,
+          $dbname,
+          $charset
+        ]));
+
+        return "mysql:$dsn";
 
     }
-
-    $dsn = implode(";", array_filter([
-      $unix_socket ?: $host,
-      $unix_socket ? "" : $port,
-      $dbname,
-      $charset
-    ]));
-
-    return "mysql:$dsn";
-
-  }
 
 }

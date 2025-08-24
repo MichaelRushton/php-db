@@ -10,5 +10,5 @@ use MichaelRushton\SQL\Statements\Update as StatementsUpdate;
 
 class Update extends StatementsUpdate implements UpdateInterface
 {
-  use Connection;
+    use Connection;
 }

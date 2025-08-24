@@ -10,5 +10,5 @@ use MichaelRushton\SQL\Statements\Replace as StatementsReplace;
 
 class Replace extends StatementsReplace implements ReplaceInterface
 {
-  use Connection;
+    use Connection;
 }

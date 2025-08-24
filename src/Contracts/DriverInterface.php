@@ -8,9 +8,8 @@ use MichaelRushton\SQL\Contracts\SQLInterface;
 
 interface DriverInterface
 {
+    public function connect(array $config = []): ConnectionInterface;
 
-  public function connect(array $config = []): ConnectionInterface;
-
-  public function sql(): SQLInterface;
+    public function sql(): SQLInterface;
 
 }
