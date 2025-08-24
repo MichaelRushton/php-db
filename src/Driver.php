@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace MichaelRushton\DB;
 
-use MichaelRushton\DB\Contracts\ConnectionInterface;
-use MichaelRushton\DB\Contracts\DriverInterface;
+use MichaelRushton\DB\Interfaces\ConnectionInterface;
+use MichaelRushton\DB\Interfaces\DriverInterface;
 use MichaelRushton\DB\Drivers\MySQL;
 use MichaelRushton\DB\Drivers\PostgreSQL;
 use MichaelRushton\DB\Drivers\SQLite;
 use MichaelRushton\DB\Drivers\SQLServer;
-use MichaelRushton\SQL\Contracts\SQLInterface;
+use MichaelRushton\SQL\Interfaces\SQLInterface;
 use MichaelRushton\SQL\SQL;
 use PDO;
 use SensitiveParameter;

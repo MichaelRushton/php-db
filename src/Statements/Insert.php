@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelRushton\DB\Statements;
 
-use MichaelRushton\DB\Contracts\Statements\InsertInterface;
+use MichaelRushton\DB\Interfaces\Statements\InsertInterface;
 use MichaelRushton\DB\Traits\Connection;
 use MichaelRushton\SQL\Statements\Insert as StatementsInsert;
 

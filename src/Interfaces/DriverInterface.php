@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MichaelRushton\DB\Contracts;
+namespace MichaelRushton\DB\Interfaces;
 
-use MichaelRushton\SQL\Contracts\SQLInterface;
+use MichaelRushton\SQL\Interfaces\SQLInterface;
 
 interface DriverInterface
 {

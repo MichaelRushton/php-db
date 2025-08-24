@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace MichaelRushton\DB\Contracts;
+namespace MichaelRushton\DB\Interfaces;
 
 use Closure;
-use MichaelRushton\DB\Contracts\Statements\DeleteInterface;
-use MichaelRushton\DB\Contracts\Statements\InsertInterface;
-use MichaelRushton\DB\Contracts\Statements\SelectInterface;
-use MichaelRushton\DB\Contracts\Statements\UpdateInterface;
+use MichaelRushton\DB\Interfaces\Statements\DeleteInterface;
+use MichaelRushton\DB\Interfaces\Statements\InsertInterface;
+use MichaelRushton\DB\Interfaces\Statements\SelectInterface;
+use MichaelRushton\DB\Interfaces\Statements\UpdateInterface;
 use PDO;
 use PDOStatement;
 

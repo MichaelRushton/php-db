@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace MichaelRushton\DB\Contracts\Statements;
+namespace MichaelRushton\DB\Interfaces\Statements;
 
-use MichaelRushton\DB\Contracts\ConnectionInterface;
-use MichaelRushton\SQL\Contracts\SQLInterface;
-use MichaelRushton\SQL\Contracts\Statements\InsertInterface as StatementsInsertInterface;
+use MichaelRushton\DB\Interfaces\ConnectionInterface;
+use MichaelRushton\SQL\Interfaces\SQLInterface;
+use MichaelRushton\SQL\Interfaces\Statements\SelectInterface as StatementsSelectInterface;
 use PDO;
 use PDOStatement;
 
-interface InsertInterface extends StatementsInsertInterface
+interface SelectInterface extends StatementsSelectInterface
 {
     public function connection(): ConnectionInterface;
 

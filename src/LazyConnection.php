@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MichaelRushton\DB;
 
-use MichaelRushton\DB\Contracts\ConnectionInterface;
-use MichaelRushton\DB\Contracts\DriverInterface;
+use MichaelRushton\DB\Interfaces\ConnectionInterface;
+use MichaelRushton\DB\Interfaces\DriverInterface;
 use PDO;
 use SensitiveParameter;
 

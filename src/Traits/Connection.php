@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MichaelRushton\DB\Traits;
 
-use MichaelRushton\DB\Contracts\ConnectionInterface;
-use MichaelRushton\SQL\Contracts\SQLInterface;
+use MichaelRushton\DB\Interfaces\ConnectionInterface;
+use MichaelRushton\SQL\Interfaces\SQLInterface;
 use PDO;
 use PDOStatement;
 

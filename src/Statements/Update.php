@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace MichaelRushton\DB\Statements;
 
-use MichaelRushton\DB\Contracts\Statements\UpdateInterface;
+use MichaelRushton\DB\Interfaces\Statements\UpdateInterface;
 use MichaelRushton\DB\Traits\Connection;
 use MichaelRushton\SQL\Statements\Update as StatementsUpdate;
 

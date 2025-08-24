@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace MichaelRushton\DB\Contracts\Statements;
+namespace MichaelRushton\DB\Interfaces\Statements;
 
-use MichaelRushton\DB\Contracts\ConnectionInterface;
-use MichaelRushton\SQL\Contracts\SQLInterface;
-use MichaelRushton\SQL\Contracts\Statements\ReplaceInterface as StatementsReplaceInterface;
+use MichaelRushton\DB\Interfaces\ConnectionInterface;
+use MichaelRushton\SQL\Interfaces\SQLInterface;
+use MichaelRushton\SQL\Interfaces\Statements\ReplaceInterface as StatementsReplaceInterface;
 use PDO;
 use PDOStatement;
 
