@@ -19,6 +19,8 @@ interface StatementInterface
         mixed ...$args
     ): PDOStatement|false;
 
+    public function cache(string|int|null $key = null): static;
+
     public function prepare(): PDOStatement|false;
 
     public function execute(?array $params = null): PDOStatement|false;
