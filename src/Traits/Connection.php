@@ -30,11 +30,6 @@ trait Connection
 
     }
 
-    public function sql(): SQLInterface
-    {
-        return $this->sql;
-    }
-
     public function exec(): int|false
     {
         return $this->connection()->exec("$this");
