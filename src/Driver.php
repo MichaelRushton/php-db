@@ -10,6 +10,7 @@ use MichaelRushton\DB\Drivers\MySQL;
 use MichaelRushton\DB\Drivers\PostgreSQL;
 use MichaelRushton\DB\Drivers\SQLite;
 use MichaelRushton\DB\Drivers\SQLServer;
+use MichaelRushton\DB\Interfaces\LazyConnectionInterface;
 use MichaelRushton\SQL\Interfaces\SQLInterface;
 use MichaelRushton\SQL\SQL;
 use PDO;
@@ -38,7 +39,7 @@ enum Driver implements DriverInterface
 
     public function lazyConnect(
         #[SensitiveParameter] array $config = []
-    ): ConnectionInterface {
+    ): LazyConnectionInterface {
         return new LazyConnection($this, $config);
     }
 

@@ -6,10 +6,11 @@ namespace MichaelRushton\DB;
 
 use MichaelRushton\DB\Interfaces\ConnectionInterface;
 use MichaelRushton\DB\Interfaces\DriverInterface;
+use MichaelRushton\DB\Interfaces\LazyConnectionInterface;
 use PDO;
 use SensitiveParameter;
 
-class LazyConnection extends Connection
+class LazyConnection extends Connection implements LazyConnectionInterface
 {
     protected ConnectionInterface $connection;
 
