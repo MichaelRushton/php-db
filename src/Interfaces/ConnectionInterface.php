@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace MichaelRushton\DB\Interfaces;
 
 use Closure;
-use MichaelRushton\DB\Interfaces\Statements\DeleteInterface;
-use MichaelRushton\DB\Interfaces\Statements\InsertInterface;
-use MichaelRushton\DB\Interfaces\Statements\SelectInterface;
-use MichaelRushton\DB\Interfaces\Statements\UpdateInterface;
+use MichaelRushton\SQL\Interfaces\Statements\DeleteInterface;
+use MichaelRushton\SQL\Interfaces\Statements\InsertInterface;
+use MichaelRushton\SQL\Interfaces\Statements\SelectInterface;
+use MichaelRushton\SQL\Interfaces\Statements\UpdateInterface;
 use PDO;
 use PDOStatement;
 
@@ -68,12 +68,12 @@ interface ConnectionInterface
 
     public function transaction(Closure $callback): bool;
 
-    public function delete(): DeleteInterface;
+    public function delete(): DeleteInterface & StatementInterface;
 
-    public function insert(): InsertInterface;
+    public function insert(): InsertInterface & StatementInterface;
 
-    public function select(): SelectInterface;
+    public function select(): SelectInterface & StatementInterface;
 
-    public function update(): UpdateInterface;
+    public function update(): UpdateInterface & StatementInterface;
 
 }

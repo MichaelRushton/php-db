@@ -8,17 +8,18 @@ use BadMethodCallException;
 use Closure;
 use MichaelRushton\DB\Interfaces\ConnectionInterface;
 use MichaelRushton\DB\Interfaces\DriverInterface;
-use MichaelRushton\DB\Interfaces\Statements\DeleteInterface;
-use MichaelRushton\DB\Interfaces\Statements\InsertInterface;
-use MichaelRushton\DB\Interfaces\Statements\ReplaceInterface;
-use MichaelRushton\DB\Interfaces\Statements\SelectInterface;
-use MichaelRushton\DB\Interfaces\Statements\UpdateInterface;
+use MichaelRushton\DB\Interfaces\StatementInterface;
 use MichaelRushton\DB\Statements\Delete;
 use MichaelRushton\DB\Statements\Insert;
 use MichaelRushton\DB\Statements\Replace;
 use MichaelRushton\DB\Statements\Select;
 use MichaelRushton\DB\Statements\Update;
 use MichaelRushton\DB\Traits\Cache;
+use MichaelRushton\SQL\Interfaces\Statements\DeleteInterface;
+use MichaelRushton\SQL\Interfaces\Statements\InsertInterface;
+use MichaelRushton\SQL\Interfaces\Statements\ReplaceInterface;
+use MichaelRushton\SQL\Interfaces\Statements\SelectInterface;
+use MichaelRushton\SQL\Interfaces\Statements\UpdateInterface;
 use PDO;
 use PDOStatement;
 use Throwable;
@@ -200,17 +201,17 @@ class Connection implements ConnectionInterface
 
     }
 
-    public function delete(): DeleteInterface
+    public function delete(): DeleteInterface & StatementInterface
     {
         return new Delete($this, $this->driver()->sql());
     }
 
-    public function insert(): InsertInterface
+    public function insert(): InsertInterface & StatementInterface
     {
         return new Insert($this, $this->driver()->sql());
     }
 
-    public function replace(): ReplaceInterface
+    public function replace(): ReplaceInterface & StatementInterface
     {
 
         if (in_array($driver = $this->driver(), [Driver::PostgreSQL, Driver::SQLServer])) {
@@ -221,12 +222,12 @@ class Connection implements ConnectionInterface
 
     }
 
-    public function select(): SelectInterface
+    public function select(): SelectInterface & StatementInterface
     {
         return new Select($this, $this->driver()->sql());
     }
 
-    public function update(): UpdateInterface
+    public function update(): UpdateInterface & StatementInterface
     {
         return new Update($this, $this->driver()->sql());
     }

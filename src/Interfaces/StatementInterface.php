@@ -2,19 +2,15 @@
 
 declare(strict_types=1);
 
-namespace MichaelRushton\DB\Interfaces\Statements;
+namespace MichaelRushton\DB\Interfaces;
 
 use MichaelRushton\DB\Interfaces\ConnectionInterface;
-use MichaelRushton\SQL\Interfaces\SQLInterface;
-use MichaelRushton\SQL\Interfaces\Statements\ReplaceInterface as StatementsReplaceInterface;
 use PDO;
 use PDOStatement;
 
-interface ReplaceInterface extends StatementsReplaceInterface
+interface StatementInterface
 {
     public function connection(): ConnectionInterface;
-
-    public function sql(): SQLInterface;
 
     public function exec(): int|false;
 

@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace MichaelRushton\DB\Statements;
 
-use MichaelRushton\DB\Interfaces\Statements\SelectInterface;
+use MichaelRushton\DB\Interfaces\StatementInterface;
 use MichaelRushton\DB\Traits\Connection;
 use MichaelRushton\SQL\Statements\Select as StatementsSelect;
 
-class Select extends StatementsSelect implements SelectInterface
+class Select extends StatementsSelect implements StatementInterface
 {
     use Connection;
 }
