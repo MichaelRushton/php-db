@@ -89,6 +89,28 @@ test("prepare", function () {
 
 });
 
+test("cached", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    expect($connection->cached("SELECT ? c1"))
+    ->toBe($connection->cached("SELECT ? c1"))
+    ->not->toBe($connection->cached("SELECT ? c1", 1))
+    ->not->toBe($connection->prepare("SELECT ? c1"));
+
+});
+
+test("cache", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    expect($connection->cache()->prepare("SELECT ? c1"))
+    ->toBe($connection->cache()->prepare("SELECT ? c1"))
+    ->not->toBe($connection->cache(1)->prepare("SELECT ? c1"))
+    ->not->toBe($connection->prepare("SELECT ? c1"));
+
+});
+
 test("execute", function () {
 
     $connection = new LazyConnection(Driver::SQLite);

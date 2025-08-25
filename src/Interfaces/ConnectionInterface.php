@@ -26,6 +26,13 @@ interface ConnectionInterface
         mixed ...$fetch_mode_args
     ): PDOStatement|false;
 
+    public function cache(string|int|null $key = null): static;
+
+    public function cached(
+        string $query,
+        string|int|null $key = null
+    ): PDOStatement|false;
+
     public function prepare(string $query): PDOStatement|false;
 
     public function execute(

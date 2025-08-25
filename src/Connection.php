@@ -18,12 +18,17 @@ use MichaelRushton\DB\Statements\Insert;
 use MichaelRushton\DB\Statements\Replace;
 use MichaelRushton\DB\Statements\Select;
 use MichaelRushton\DB\Statements\Update;
+use MichaelRushton\DB\Traits\Cache;
 use PDO;
 use PDOStatement;
 use Throwable;
+use WeakReference;
 
 class Connection implements ConnectionInterface
 {
+    use Cache;
+    protected array $cache = [];
+
     public function __construct(
         public readonly DriverInterface $driver,
         public readonly PDO $pdo
@@ -55,7 +60,36 @@ class Connection implements ConnectionInterface
 
     public function prepare(string $query): PDOStatement|false
     {
-        return $this->pdo()->prepare($query);
+
+        try {
+            return $this->use_cache ? $this->cached($query, $this->cache_key) : $this->pdo()->prepare($query);
+        } finally {
+
+            $this->use_cache = false;
+
+            $this->cache_key = null;
+
+        }
+
+    }
+
+    public function cached(
+        string $query,
+        string|int|null $key = null
+    ): PDOStatement|false {
+
+        $key ??= hash("xxh128", $query);
+
+        if ($stmt = ($this->cache[$key] ?? null)?->get()) {
+            return $stmt;
+        }
+
+        if ($stmt = $this->pdo()->prepare($query)) {
+            $this->cache[$key] = WeakReference::create($stmt);
+        }
+
+        return $stmt;
+
     }
 
     public function execute(

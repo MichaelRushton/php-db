@@ -125,6 +125,24 @@ test("prepare", function () {
 
 });
 
+test("cache", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($connection->pdo());
+
+    $stmt1 = new Update($connection, SQL::SQLite);
+    $stmt2 = new Update($connection, SQL::SQLite);
+    $stmt3 = new Update($connection, SQL::SQLite);
+
+    expect($stmt1->table("test")->set('c1', 1)->cache()->prepare())
+    ->toBe($stmt1->prepare())
+    ->toBe($stmt2->table("test")->set('c1', 1)->cache()->prepare())
+    ->toBe($stmt2->prepare())
+    ->not->toBe($stmt3->table("test")->set('c1', 1)->cache(1)->prepare());
+
+});
+
 test("execute", function () {
 
     $connection = new LazyConnection(Driver::SQLite);

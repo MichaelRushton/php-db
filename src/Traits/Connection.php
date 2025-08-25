@@ -11,6 +11,8 @@ use PDOStatement;
 
 trait Connection
 {
+    use Cache;
+
     public function __construct(
         public readonly ConnectionInterface $connection,
         protected SQLInterface $sql
@@ -19,7 +21,13 @@ trait Connection
 
     public function connection(): ConnectionInterface
     {
+
+        if ($this->use_cache) {
+            $this->connection->cache($this->cache_key);
+        }
+
         return $this->connection;
+
     }
 
     public function sql(): SQLInterface

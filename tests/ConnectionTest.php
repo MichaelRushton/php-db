@@ -78,6 +78,31 @@ test("prepare", function () {
     expect($stmt->fetch(PDO::FETCH_ASSOC))
     ->toBe(["c1" => "1"]);
 
+    expect($connection->prepare("SELECT ? c1"))
+    ->not->toBe($stmt);
+
+});
+
+test("cached", function () {
+
+    $connection = new Connection(Driver::SQLite, new PDO("sqlite:"));
+
+    expect($connection->cached("SELECT ? c1"))
+    ->toBe($connection->cached("SELECT ? c1"))
+    ->not->toBe($connection->cached("SELECT ? c1", 1))
+    ->not->toBe($connection->prepare("SELECT ? c1"));
+
+});
+
+test("cache", function () {
+
+    $connection = new Connection(Driver::SQLite, new PDO("sqlite:"));
+
+    expect($connection->cache()->prepare("SELECT ? c1"))
+    ->toBe($connection->cache()->prepare("SELECT ? c1"))
+    ->not->toBe($connection->cache(1)->prepare("SELECT ? c1"))
+    ->not->toBe($connection->prepare("SELECT ? c1"));
+
 });
 
 test("execute", function () {
