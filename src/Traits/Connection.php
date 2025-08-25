@@ -52,33 +52,39 @@ trait Connection
         return $this->connection()->prepare("$this");
     }
 
-    public function execute(): PDOStatement|false
+    public function execute(?array $params = null): PDOStatement|false
     {
-        return $this->connection()->execute("$this", $this->bindings());
+        return $this->connection()->execute("$this", $params ?? $this->bindings());
     }
 
-    public function fetch(int $mode = PDO::FETCH_DEFAULT): mixed
-    {
-        return $this->connection()->fetch("$this", $this->bindings(), $mode);
+    public function fetch(
+        ?array $params = null,
+        int $mode = PDO::FETCH_DEFAULT
+    ): mixed {
+        return $this->connection()->fetch("$this", $params ?? $this->bindings(), $mode);
     }
 
     public function fetchAll(
+        ?array $params = null,
         int $mode = PDO::FETCH_DEFAULT,
         mixed ...$args
     ): array|false {
-        return $this->connection()->fetchAll("$this", $this->bindings(), $mode, ...$args);
+        return $this->connection()->fetchAll("$this", $params ?? $this->bindings(), $mode, ...$args);
     }
 
-    public function fetchColumn(int $column = 0): mixed
-    {
-        return $this->connection()->fetchColumn("$this", $this->bindings(), $column);
+    public function fetchColumn(
+        ?array $params = null,
+        int $column = 0
+    ): mixed {
+        return $this->connection()->fetchColumn("$this", $params ?? $this->bindings(), $column);
     }
 
     public function fetchObject(
+        ?array $params = null,
         ?string $class = "stdClass",
         array $constructorArgs = []
     ): object|false {
-        return $this->connection()->fetchObject("$this", $this->bindings(), $class, $constructorArgs);
+        return $this->connection()->fetchObject("$this", $params ?? $this->bindings(), $class, $constructorArgs);
     }
 
 }

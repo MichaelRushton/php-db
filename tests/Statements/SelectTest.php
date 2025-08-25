@@ -127,6 +127,23 @@ test("execute", function () {
 
 });
 
+test("execute with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    $stmt = new Select($connection, SQL::SQLite);
+
+    expect(
+        $stmt = $stmt->columns(new Raw("? c1", 0))
+    ->execute([1])
+    )
+    ->toBeInstanceOf(PDOStatement::class);
+
+    expect($stmt->fetch(PDO::FETCH_ASSOC))
+    ->toBe(["c1" => 1]);
+
+});
+
 test("fetch", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -141,6 +158,20 @@ test("fetch", function () {
 
 });
 
+test("fetch with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    $stmt = new Select($connection, SQL::SQLite);
+
+    expect(
+        $stmt->columns(new Raw("? c1", 0))
+    ->fetch([1])
+    )
+    ->toBe(["c1" => 1, 0 => 1]);
+
+});
+
 test("fetch with fetch mode", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -149,7 +180,7 @@ test("fetch with fetch mode", function () {
 
     expect(
         $stmt->columns(new Raw("? c1", 1))
-    ->fetch(PDO::FETCH_ASSOC)
+    ->fetch(mode: PDO::FETCH_ASSOC)
     )
     ->toBe(["c1" => 1]);
 
@@ -169,6 +200,20 @@ test("fetch all", function () {
 
 });
 
+test("fetch all with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    $stmt = new Select($connection, SQL::SQLite);
+
+    expect(
+        $stmt->columns(new Raw("? c1", 0))
+    ->fetchAll([1])
+    )
+    ->toBe([["c1" => 1, 0 => 1]]);
+
+});
+
 test("fetch all with fetch mode", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -177,7 +222,7 @@ test("fetch all with fetch mode", function () {
 
     expect(
         $stmt->columns(new Raw("? c1", 1))
-    ->fetchAll(PDO::FETCH_ASSOC)
+    ->fetchAll(mode: PDO::FETCH_ASSOC)
     )
     ->toBe([["c1" => 1]]);
 
@@ -197,6 +242,20 @@ test("fetch column", function () {
 
 });
 
+test("fetch column with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    $stmt = new Select($connection, SQL::SQLite);
+
+    expect(
+        $stmt->columns(new Raw("?", 0))
+    ->fetchColumn([1])
+    )
+    ->toBe(1);
+
+});
+
 test("fetch numbered column", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -205,7 +264,7 @@ test("fetch numbered column", function () {
 
     expect(
         $stmt->columns(new Raw("?, ?", [1, 2]))
-    ->fetchColumn(1)
+    ->fetchColumn(column: 1)
     )
     ->toBe(2);
 
@@ -228,6 +287,23 @@ test("fetch object", function () {
 
 });
 
+test("fetch object with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    $stmt = new Select($connection, SQL::SQLite);
+
+    expect(
+        $obj = $stmt->columns(new Raw("? id", 0))
+    ->fetchObject([1])
+    )
+    ->toBeInstanceOf(stdClass::class);
+
+    expect($obj->id)
+    ->toBe(1);
+
+});
+
 test("fetch named object", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -236,7 +312,7 @@ test("fetch named object", function () {
 
     expect(
         $obj = $stmt->columns(new Raw("? id", 1))
-    ->fetchObject(Test::class, [1])
+    ->fetchObject(class: Test::class, constructorArgs: [1])
     )
     ->toBeInstanceOf(Test::class);
 

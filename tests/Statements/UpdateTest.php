@@ -167,6 +167,30 @@ test("execute", function () {
 
 });
 
+test("execute with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($pdo = $connection->pdo());
+
+    $pdo->query("INSERT INTO test VALUES (1, ''), (2, '')");
+
+    $stmt = new Update($connection, SQL::SQLite);
+
+    expect(
+        $stmt = $stmt->table("test")
+    ->set("c1", "test")
+    ->where("id", 0)
+    ->returning()
+    ->execute(["test", 1])
+    )
+    ->toBeInstanceOf(PDOStatement::class);
+
+    expect($stmt->fetch(PDO::FETCH_ASSOC))
+    ->toBe(["id" => 1, "c1" => "test"]);
+
+});
+
 test("fetch", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -188,6 +212,27 @@ test("fetch", function () {
 
 });
 
+test("fetch with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($pdo = $connection->pdo());
+
+    $pdo->query("INSERT INTO test VALUES (1, ''), (2, '')");
+
+    $stmt = new Update($connection, SQL::SQLite);
+
+    expect(
+        $stmt->table("test")
+    ->set("c1", "test")
+    ->where("id", 0)
+    ->returning()
+    ->fetch(["test", 1])
+    )
+    ->toBe(["id" => 1, 0 => 1, "c1" => "test", 1 => "test"]);
+
+});
+
 test("fetch with fetch mode", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -203,7 +248,7 @@ test("fetch with fetch mode", function () {
     ->set("c1", "test")
     ->where("id", 1)
     ->returning()
-    ->fetch(PDO::FETCH_ASSOC)
+    ->fetch(mode: PDO::FETCH_ASSOC)
     )
     ->toBe(["id" => 1, "c1" => "test"]);
 
@@ -230,6 +275,27 @@ test("fetch all", function () {
 
 });
 
+test("fetch all with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($pdo = $connection->pdo());
+
+    $pdo->query("INSERT INTO test VALUES (1, ''), (2, '')");
+
+    $stmt = new Update($connection, SQL::SQLite);
+
+    expect(
+        $stmt->table("test")
+    ->set("c1", "test")
+    ->where("id", 0)
+    ->returning()
+    ->fetchAll(["test", 1])
+    )
+    ->toBe([["id" => 1, 0 => 1, "c1" => "test", 1 => "test"]]);
+
+});
+
 test("fetch all with fetch mode", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -245,7 +311,7 @@ test("fetch all with fetch mode", function () {
     ->set("c1", "test")
     ->where("id", 1)
     ->returning()
-    ->fetchAll(PDO::FETCH_ASSOC)
+    ->fetchAll(mode: PDO::FETCH_ASSOC)
     )
     ->toBe([["id" => 1, "c1" => "test"]]);
 
@@ -272,6 +338,27 @@ test("fetch column", function () {
 
 });
 
+test("fetch column with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($pdo = $connection->pdo());
+
+    $pdo->query("INSERT INTO test VALUES (1, ''), (2, '')");
+
+    $stmt = new Update($connection, SQL::SQLite);
+
+    expect(
+        $stmt->table("test")
+    ->set("c1", "test")
+    ->where("id", 0)
+    ->returning()
+    ->fetchColumn(["test", 1])
+    )
+    ->toBe(1);
+
+});
+
 test("fetch numbered column", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -287,7 +374,7 @@ test("fetch numbered column", function () {
     ->set("c1", "test")
     ->where("id", 1)
     ->returning()
-    ->fetchColumn(1)
+    ->fetchColumn(column: 1)
     )
     ->toBe("test");
 
@@ -317,6 +404,30 @@ test("fetch object", function () {
 
 });
 
+test("fetch object with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($pdo = $connection->pdo());
+
+    $pdo->query("INSERT INTO test VALUES (1, ''), (2, '')");
+
+    $stmt = new Update($connection, SQL::SQLite);
+
+    expect(
+        $obj = $stmt->table("test")
+    ->set("c1", "test")
+    ->where("id", 0)
+    ->returning()
+    ->fetchObject(["test", 1])
+    )
+    ->toBeInstanceOf(stdClass::class);
+
+    expect($obj->id)
+    ->toBe(1);
+
+});
+
 test("fetch named object", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -332,7 +443,7 @@ test("fetch named object", function () {
     ->set("c1", "test")
     ->where("id", 1)
     ->returning()
-    ->fetchObject(Test::class, [1])
+    ->fetchObject(class: Test::class, constructorArgs: [1])
     )
     ->toBeInstanceOf(Test::class);
 

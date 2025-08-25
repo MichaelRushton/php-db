@@ -148,6 +148,27 @@ test("execute", function () {
 
 });
 
+test("execute with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($connection->pdo());
+
+    $stmt = new Replace($connection, SQL::SQLite);
+
+    expect(
+        $stmt = $stmt->into("test")
+    ->values([0, ""])
+    ->returning()
+    ->execute([1, ""])
+    )
+    ->toBeInstanceOf(PDOStatement::class);
+
+    expect($stmt->fetch(PDO::FETCH_ASSOC))
+    ->toBe(["id" => 1, "c1" => ""]);
+
+});
+
 test("fetch", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -166,6 +187,24 @@ test("fetch", function () {
 
 });
 
+test("fetch with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($connection->pdo());
+
+    $stmt = new Replace($connection, SQL::SQLite);
+
+    expect(
+        $stmt->into("test")
+    ->values([0, ""])
+    ->returning()
+    ->fetch([1, ""])
+    )
+    ->toBe(["id" => 1, 0 => 1, "c1" => "", 1 => ""]);
+
+});
+
 test("fetch with fetch mode", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -178,7 +217,7 @@ test("fetch with fetch mode", function () {
         $stmt->into("test")
     ->values([1, ""])
     ->returning()
-    ->fetch(PDO::FETCH_ASSOC)
+    ->fetch(mode: PDO::FETCH_ASSOC)
     )
     ->toBe(["id" => 1, "c1" => ""]);
 
@@ -202,6 +241,24 @@ test("fetch all", function () {
 
 });
 
+test("fetch all with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($connection->pdo());
+
+    $stmt = new Replace($connection, SQL::SQLite);
+
+    expect(
+        $stmt->into("test")
+    ->values([0, ""])
+    ->returning()
+    ->fetchAll([1, ""])
+    )
+    ->toBe([["id" => 1, 0 => 1, "c1" => "", 1 => ""]]);
+
+});
+
 test("fetch all with fetch mode", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -214,7 +271,7 @@ test("fetch all with fetch mode", function () {
         $stmt->into("test")
     ->values([1, ""])
     ->returning()
-    ->fetchAll(PDO::FETCH_ASSOC)
+    ->fetchAll(mode: PDO::FETCH_ASSOC)
     )
     ->toBe([["id" => 1, "c1" => ""]]);
 
@@ -238,6 +295,24 @@ test("fetch column", function () {
 
 });
 
+test("fetch column with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($connection->pdo());
+
+    $stmt = new Replace($connection, SQL::SQLite);
+
+    expect(
+        $stmt->into("test")
+    ->values([0, ""])
+    ->returning()
+    ->fetchColumn([1, ""])
+    )
+    ->toBe(1);
+
+});
+
 test("fetch numbered column", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -250,7 +325,7 @@ test("fetch numbered column", function () {
         $stmt->into("test")
     ->values([1, ""])
     ->returning()
-    ->fetchColumn(1)
+    ->fetchColumn(column: 1)
     )
     ->toBe("");
 
@@ -277,6 +352,27 @@ test("fetch object", function () {
 
 });
 
+test("fetch object with new params", function () {
+
+    $connection = new LazyConnection(Driver::SQLite);
+
+    createTestTable($connection->pdo());
+
+    $stmt = new Replace($connection, SQL::SQLite);
+
+    expect(
+        $obj = $stmt->into("test")
+    ->values([0, ""])
+    ->returning()
+    ->fetchObject([1, ""])
+    )
+    ->toBeInstanceOf(stdClass::class);
+
+    expect($obj->id)
+    ->toBe(1);
+
+});
+
 test("fetch named object", function () {
 
     $connection = new LazyConnection(Driver::SQLite);
@@ -289,7 +385,7 @@ test("fetch named object", function () {
         $obj = $stmt->into("test")
     ->values([1, ""])
     ->returning()
-    ->fetchObject(Test::class, [1])
+    ->fetchObject(class: Test::class, constructorArgs: [1])
     )
     ->toBeInstanceOf(Test::class);
 
