@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace MichaelRushton\DB\Interfaces\Drivers;
+
+use MichaelRushton\DB\Interfaces\Connections\MariaDBConnectionInterface;
+use MichaelRushton\DB\Interfaces\DriverInterface;
+
+interface MariaDBDriverInterface extends DriverInterface
+{
+    public function username(?string $username): static;
+
+    public function password(?string $password): static;
+
+    public function database(?string $database): static;
+
+    public function host(?string $host): static;
+
+    public function port(?int $port): static;
+
+    public function unixSocket(?string $unix_socket): static;
+
+    public function charset(?string $charset): static;
+
+    public function connection(): MariaDBConnectionInterface;
+}

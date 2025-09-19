@@ -1,0 +1,21 @@
+{
+  "name": "michaelrushton/php-db",
+  "description": "A PHP library to query a database.",
+  "license": "MIT",
+  "require": {
+    "php": "^8.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "MichaelRushton\\DB\\": "src/"
+    }
+  },
+  "require-dev": {
+    "pestphp/pest": "^4.1"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  }
+}
