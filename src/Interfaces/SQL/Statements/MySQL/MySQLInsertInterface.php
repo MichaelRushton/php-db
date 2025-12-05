@@ -3,7 +3,6 @@
 declare(strict_types=1);
 
 namespace MichaelRushton\DB\Interfaces\SQL\Statements\MySQL;
-;
 
 use MichaelRushton\DB\Interfaces\SQL\Statements\InsertInterface;
 use Stringable;

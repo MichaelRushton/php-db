@@ -28,7 +28,7 @@ trait Having
         }
 
         if (\is_callable($column)) {
-            $column($having = new HavingComponent);
+            $column($having = new HavingComponent());
         } else {
             $having = new Predicate($column, $operator, $value, $num_args ??= \func_num_args());
         }

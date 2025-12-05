@@ -16,8 +16,7 @@ trait GroupBy
     public function groupBy(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
 
         $column = \is_array($column) ? $column : [$column];
 

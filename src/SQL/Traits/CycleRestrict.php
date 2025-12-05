@@ -11,8 +11,7 @@ trait CycleRestrict
     public function cycleRestrict(
         string|array $column,
         string|array ...$columns
-    ): static
-    {
+    ): static {
 
         foreach ((array) $column as $column) {
             $this->cycle_restrict[] = $column;

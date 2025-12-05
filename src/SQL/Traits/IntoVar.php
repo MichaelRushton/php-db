@@ -11,15 +11,13 @@ trait IntoVar
     public function intoVar(
         string|array $name,
         string|array ...$names
-    ): static
-    {
+    ): static {
 
         foreach ((array) $name as $n) {
             $this->into_var[] = '@' . $n;
         }
 
-        foreach ($names as $name)
-        {
+        foreach ($names as $name) {
             $this->intoVar($name);
         }
 

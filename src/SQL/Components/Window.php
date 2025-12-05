@@ -25,7 +25,8 @@ class Window implements WindowInterface, HasBindings, Stringable
 
     public function __construct(
         public readonly string $name
-    ) {}
+    ) {
+    }
 
     protected function getSpec(): string
     {

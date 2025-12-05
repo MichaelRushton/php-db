@@ -28,7 +28,7 @@ trait Where
         }
 
         if (\is_callable($column)) {
-            $column($where = new WhereComponent);
+            $column($where = new WhereComponent());
         } else {
             $where = new Predicate($column, $operator, $value, $num_args ??= \func_num_args());
         }

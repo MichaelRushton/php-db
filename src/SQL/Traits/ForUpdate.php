@@ -13,8 +13,7 @@ trait ForUpdate
     public function forUpdate(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_update[] = ['FOR UPDATE', $this->getForLockOf($table, $tables)];
 
@@ -34,8 +33,7 @@ trait ForUpdate
     public function forUpdateNoWait(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_update[] = ['FOR UPDATE', $this->getForLockOf($table, $tables), 'NOWAIT'];
 
@@ -46,8 +44,7 @@ trait ForUpdate
     public function forUpdateSkipLocked(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_update[] = ['FOR UPDATE', $this->getForLockOf($table, $tables), 'SKIP LOCKED'];
 

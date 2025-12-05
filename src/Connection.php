@@ -19,7 +19,8 @@ abstract class Connection implements ConnectionInterface
 
     public function __construct(
         public readonly DriverInterface $driver
-    ) {}
+    ) {
+    }
 
     public function driver(): DriverInterface
     {

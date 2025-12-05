@@ -11,8 +11,7 @@ trait Partition
     public function partition(
         string|array $partition,
         string|array ...$partisions
-    ): static
-    {
+    ): static {
 
         foreach ((array) $partition as $partition) {
             $this->partitions[] = $partition;

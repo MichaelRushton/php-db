@@ -36,48 +36,42 @@ trait OrderBy
     public function orderBy(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
         return $this->order($column, $columns);
     }
 
     public function orderByDesc(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
         return $this->order($column, $columns, 'DESC');
     }
 
     public function orderByNullsFirst(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
         return $this->order($column, $columns, 'ASC NULLS FIRST');
     }
 
     public function orderByNullsLast(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
         return $this->order($column, $columns, 'ASC NULLS LAST');
     }
 
     public function orderByDescNullsFirst(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
         return $this->order($column, $columns, 'DESC NULLS FIRST');
     }
 
     public function orderByDescNullsLast(
         string|Stringable|array $column,
         string|Stringable|array ...$columns
-    ): static
-    {
+    ): static {
         return $this->order($column, $columns, 'DESC NULLS LAST');
     }
 

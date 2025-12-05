@@ -32,7 +32,7 @@ trait Join
 
             $alias = \is_string($alias) ? ' ' . $alias : '';
 
-            $this->join[] = [$type, SQL::identifier($table), $alias, $condition ?? ''];
+            $this->join[] = [$type, SQL::identifier($table), $alias, $condition ?? ['', '']];
 
         }
 

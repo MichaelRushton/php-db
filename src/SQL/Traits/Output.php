@@ -15,8 +15,7 @@ trait Output
     public function output(
         string|Stringable|int|float|bool|null|array $column,
         string|Stringable|int|float|bool|null|array ...$columns
-    ): static
-    {
+    ): static {
 
         $column = \is_array($column) ? $column : [$column];
 
@@ -24,8 +23,7 @@ trait Output
             $this->output[] = [SQL::identifier($column), \is_string($alias) ? ' ' . $alias : ''];
         }
 
-        foreach ($columns as $column)
-        {
+        foreach ($columns as $column) {
             $this->output($column);
         }
 

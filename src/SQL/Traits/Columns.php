@@ -11,8 +11,7 @@ trait Columns
     public function columns(
         string|array $column,
         string|array ...$columns
-    ): static
-    {
+    ): static {
 
         foreach ((array) $column as $column) {
             $this->columns[] = $column;

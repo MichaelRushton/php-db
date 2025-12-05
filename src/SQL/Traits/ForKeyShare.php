@@ -13,8 +13,7 @@ trait ForKeyShare
     public function forKeyShare(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_key_share[] = ['FOR KEY SHARE', $this->getForLockOf($table, $tables)];
 
@@ -25,8 +24,7 @@ trait ForKeyShare
     public function forKeyShareNoWait(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_key_share[] = ['FOR KEY SHARE', $this->getForLockOf($table, $tables), 'NOWAIT'];
 
@@ -37,8 +35,7 @@ trait ForKeyShare
     public function forKeyShareSkipLocked(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_key_share[] = ['FOR KEY SHARE', $this->getForLockOf($table, $tables), 'SKIP LOCKED'];
 

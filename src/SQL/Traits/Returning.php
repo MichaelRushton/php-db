@@ -15,8 +15,7 @@ trait Returning
     public function returning(
         string|Stringable|int|float|bool|null|array $column = '*',
         string|Stringable|int|float|bool|null|array ...$columns
-    ): static
-    {
+    ): static {
 
         $column = \is_array($column) ? $column : [$column];
 

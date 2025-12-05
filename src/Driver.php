@@ -14,7 +14,8 @@ abstract class Driver implements DriverInterface
 
     public function __construct(
         public readonly ?array $pdo_options = null
-    ) {}
+    ) {
+    }
 
     public function pdo(): PDO
     {

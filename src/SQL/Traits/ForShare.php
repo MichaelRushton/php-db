@@ -13,8 +13,7 @@ trait ForShare
     public function forShare(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_share[] = ['FOR SHARE', $this->getForLockOf($table, $tables)];
 
@@ -25,8 +24,7 @@ trait ForShare
     public function forShareNoWait(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_share[] = ['FOR SHARE', $this->getForLockOf($table, $tables), 'NOWAIT'];
 
@@ -37,8 +35,7 @@ trait ForShare
     public function forShareSkipLocked(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_share[] = ['FOR SHARE', $this->getForLockOf($table, $tables), 'SKIP LOCKED'];
 

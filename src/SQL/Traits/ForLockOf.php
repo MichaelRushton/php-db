@@ -9,8 +9,7 @@ trait ForLockOf
     protected function getForLockOf(
         string|array|null $table,
         array $tables = []
-    ): string
-    {
+    ): string {
 
         $tables = array_merge((array) $table, $tables);
 

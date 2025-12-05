@@ -13,8 +13,7 @@ trait ForNoKeyUpdate
     public function forNoKeyUpdate(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_no_key_update[] = ['FOR NO KEY UPDATE', $this->getForLockOf($table, $tables)];
 
@@ -25,8 +24,7 @@ trait ForNoKeyUpdate
     public function forNoKeyUpdateNoWait(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_no_key_update[] = ['FOR NO KEY UPDATE', $this->getForLockOf($table, $tables), 'NOWAIT'];
 
@@ -37,8 +35,7 @@ trait ForNoKeyUpdate
     public function forNoKeyUpdateSkipLocked(
         string|array|null $table = null,
         string|array ...$tables
-    ): static
-    {
+    ): static {
 
         $this->for_no_key_update[] = ['FOR NO KEY UPDATE', $this->getForLockOf($table, $tables), 'SKIP LOCKED'];
 

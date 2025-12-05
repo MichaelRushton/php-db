@@ -17,11 +17,9 @@ trait IndexHint
 
         $index = (array) $index;
 
-        foreach ($indexes as $indexes)
-        {
+        foreach ($indexes as $indexes) {
 
-            foreach ((array) $indexes as $i)
-            {
+            foreach ((array) $indexes as $i) {
                 $index[] = $i;
             }
 
@@ -38,72 +36,63 @@ trait IndexHint
     public function useIndex(
         string|array|null $index = null,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('USE', $index, $indexes);
     }
 
     public function useIndexForOrderBy(
         string|array|null $index = null,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('USE', $index, $indexes, ' FOR ORDER BY');
     }
 
     public function useIndexForGroupBy(
         string|array|null $index = null,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('USE', $index, $indexes, ' FOR GROUP BY');
     }
 
     public function ignoreIndex(
         string|array $index,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('IGNORE', $index, $indexes);
     }
 
     public function ignoreIndexForOrderBy(
         string|array $index,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('IGNORE', $index, $indexes, ' FOR ORDER BY');
     }
 
     public function ignoreIndexForGroupBy(
         string|array $index,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('IGNORE', $index, $indexes, ' FOR GROUP BY');
     }
 
     public function forceIndex(
         string|array $index,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('FORCE', $index, $indexes);
     }
 
     public function forceIndexForOrderBy(
         string|array $index,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('FORCE', $index, $indexes, ' FOR ORDER BY');
     }
 
     public function forceIndexForGroupBy(
         string|array $index,
         string|array ...$indexes
-    ): static
-    {
+    ): static {
         return $this->index('FORCE', $index, $indexes, ' FOR GROUP BY');
     }
 

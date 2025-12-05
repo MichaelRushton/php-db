@@ -10,16 +10,11 @@ trait When
         mixed $value,
         ?callable $if_true = null,
         ?callable $if_false = null
-    ): static
-    {
+    ): static {
 
-        if ($value && $if_true)
-        {
+        if ($value && $if_true) {
             $if_true($this, $value);
-        }
-
-        elseif (!$value && $if_false)
-        {
+        } elseif (!$value && $if_false) {
             $if_false($this, $value);
         }
 

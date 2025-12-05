@@ -15,8 +15,7 @@ trait From
     public function from(
         string|Stringable|array $table,
         string|Stringable|array ...$tables
-    ): static
-    {
+    ): static {
 
         $table = \is_array($table) ? $table : [$table];
 
