@@ -31,14 +31,14 @@ abstract class Statement implements StatementInterface, HasBindings, Stringable
 
     public function exec(): int|false
     {
-        return $this->connection()->pdo()->exec("$this");
+        return $this->connection()->exec("$this");
     }
 
     public function query(
         ?int $fetchMode = null,
         mixed ...$fetchModeArgs
     ): PDOStatement|false {
-        return $this->connection()->pdo()->query("$this", $fetchMode, ...$fetchModeArgs);
+        return $this->connection()->query("$this", $fetchMode, ...$fetchModeArgs);
     }
 
     public function prepare(array $options = []): PDOStatement|false
