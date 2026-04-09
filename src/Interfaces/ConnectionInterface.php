@@ -14,11 +14,22 @@ use PDOStatement;
 
 interface ConnectionInterface
 {
+
+    public function beforeConnect(callable $callback): static;
+
+    public function afterConnect(callable $callback): static;
+
+    public function beforePrepare(callable $callback): static;
+
+    public function afterPrepare(callable $callback): static;
+
+    public function beforeExecute(callable $callback): static;
+
+    public function afterExecute(callable $callback): static;
+
     public function driver(): DriverInterface;
 
     public function pdo(): PDO;
-
-    public function beforeExecute(callable $callback): static;
 
     public function exec(string $statement): int|false;
 
