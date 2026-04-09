@@ -18,6 +18,8 @@ interface ConnectionInterface
 
     public function pdo(): PDO;
 
+    public function beforeExecute(callable $callback): static;
+
     public function exec(string $statement): int|false;
 
     public function query(
