@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MySQL\MySQLUpdate;
 
-test('update', function () {
+test('update', function (): void {
 
     expect(
         (string) new MySQLUpdate(Get::connection())

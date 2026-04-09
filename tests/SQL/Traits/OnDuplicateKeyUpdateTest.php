@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBInsert;
 
-test('on duplicate key update', function ($column, $value, $expected, $bindings = []) {
+test('on duplicate key update', function ($column, $value, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new MariaDBInsert(Get::connection())

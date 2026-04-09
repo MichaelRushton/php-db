@@ -6,14 +6,14 @@ use MichaelRushton\DB\SQL\Components\Having;
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('empty having', function () {
+test('empty having', function (): void {
 
     expect((string) new Having())
     ->toBe('');
 
 });
 
-test('having single column', function ($column, $expected, $bindings = []) {
+test('having single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -35,7 +35,7 @@ test('having single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('having implicit operator', function ($value, $expected, $bindings = []) {
+test('having implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -57,7 +57,7 @@ test('having implicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('having explicit operator', function ($value, $expected, $bindings = []) {
+test('having explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -79,11 +79,11 @@ test('having explicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having callback', function ($column, $expected, $bindings = []) {
+test('having callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
-        ->having(function (Having $having) use ($column) {
+        ->having(function (Having $having) use ($column): void {
             $having->having($column);
         })
     )
@@ -103,7 +103,7 @@ test('having callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('or having single column', function ($column, $expected, $bindings = []) {
+test('or having single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -126,7 +126,7 @@ test('or having single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], 'c1 = ? OR c2 = ?', ['test', 1]],
 ]);
 
-test('or having implicit operator', function ($value, $expected, $bindings = []) {
+test('or having implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -149,7 +149,7 @@ test('or having implicit operator', function ($value, $expected, $bindings = [])
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('or having explicit operator', function ($value, $expected, $bindings = []) {
+test('or having explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -172,12 +172,12 @@ test('or having explicit operator', function ($value, $expected, $bindings = [])
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having callback', function ($column, $expected, $bindings = []) {
+test('or having callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
         ->having('c0')
-        ->orHaving(function (Having $having) use ($column) {
+        ->orHaving(function (Having $having) use ($column): void {
             $having->having($column);
         })
     )
@@ -197,7 +197,7 @@ test('or having callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('having not single column', function ($column, $expected, $bindings = []) {
+test('having not single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -219,7 +219,7 @@ test('having not single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(NOT c1 = ? AND NOT c2 = ?)', ['test', 1]],
 ]);
 
-test('having not implicit operator', function ($value, $expected, $bindings = []) {
+test('having not implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -241,7 +241,7 @@ test('having not implicit operator', function ($value, $expected, $bindings = []
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('having not explicit operator', function ($value, $expected, $bindings = []) {
+test('having not explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -263,11 +263,11 @@ test('having not explicit operator', function ($value, $expected, $bindings = []
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having not callback', function ($column, $expected, $bindings = []) {
+test('having not callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
-        ->havingNot(function (Having $having) use ($column) {
+        ->havingNot(function (Having $having) use ($column): void {
             $having->having($column);
         })
     )
@@ -287,7 +287,7 @@ test('having not callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('or having not single column', function ($column, $expected, $bindings = []) {
+test('or having not single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -310,7 +310,7 @@ test('or having not single column', function ($column, $expected, $bindings = []
     [['c1' => 'test', 'c2' => 1], 'c1 = ? OR NOT c2 = ?', ['test', 1]],
 ]);
 
-test('or having not implicit operator', function ($value, $expected, $bindings = []) {
+test('or having not implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -333,7 +333,7 @@ test('or having not implicit operator', function ($value, $expected, $bindings =
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('or having not explicit operator', function ($value, $expected, $bindings = []) {
+test('or having not explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -356,12 +356,12 @@ test('or having not explicit operator', function ($value, $expected, $bindings =
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having not callback', function ($column, $expected, $bindings = []) {
+test('or having not callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
         ->having('c0')
-        ->orHavingNot(function (Having $having) use ($column) {
+        ->orHavingNot(function (Having $having) use ($column): void {
             $having->having($column);
         })
     )
@@ -381,7 +381,7 @@ test('or having not callback', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having in', function ($column, $expected, $bindings = []) {
+test('having in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -402,7 +402,7 @@ test('having in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having in', function ($column, $expected, $bindings = []) {
+test('or having in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -424,7 +424,7 @@ test('or having in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having not in', function ($column, $expected, $bindings = []) {
+test('having not in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -445,7 +445,7 @@ test('having not in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having not in', function ($column, $expected, $bindings = []) {
+test('or having not in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -467,7 +467,7 @@ test('or having not in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having between', function ($column, $expected, $bindings = []) {
+test('having between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -487,7 +487,7 @@ test('having between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having between', function ($column, $expected, $bindings = []) {
+test('or having between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -508,7 +508,7 @@ test('or having between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having not between', function ($column, $expected, $bindings = []) {
+test('having not between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -528,7 +528,7 @@ test('having not between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having not between', function ($column, $expected, $bindings = []) {
+test('or having not between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -549,7 +549,7 @@ test('or having not between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having null', function ($column, $expected, $bindings = []) {
+test('having null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -567,7 +567,7 @@ test('having null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having null', function ($column, $expected, $bindings = []) {
+test('or having null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -586,7 +586,7 @@ test('or having null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('having not null', function ($column, $expected, $bindings = []) {
+test('having not null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()
@@ -604,7 +604,7 @@ test('having not null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or having not null', function ($column, $expected, $bindings = []) {
+test('or having not null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $having = new Having()

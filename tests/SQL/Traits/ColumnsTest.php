@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteInsert;
 
-test('columns', function ($column, $expected, $bindings = []) {
+test('columns', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteInsert(Get::connection())
@@ -21,7 +21,7 @@ test('columns', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('columns spread', function () {
+test('columns spread', function (): void {
 
     expect(
         (string) new SQLiteInsert(Get::connection())

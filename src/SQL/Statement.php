@@ -21,8 +21,7 @@ abstract class Statement implements StatementInterface, HasBindings, Stringable
 
     public function __construct(
         public readonly ConnectionInterface $connection
-    ) {
-    }
+    ) {}
 
     public function connection(): ConnectionInterface
     {

@@ -31,8 +31,7 @@ class Subquery implements SubqueryInterface, HasBindings, Stringable
 
     public function __construct(
         public readonly string|Stringable $stmt
-    ) {
-    }
+    ) {}
 
     protected function getStmt(): string
     {

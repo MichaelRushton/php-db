@@ -28,8 +28,7 @@ class CTE implements CTEInterface, HasBindings, Stringable
     public function __construct(
         public readonly string $name,
         public readonly string|Stringable $stmt
-    ) {
-    }
+    ) {}
 
     protected function getStmt(): string
     {
@@ -50,14 +49,14 @@ class CTE implements CTEInterface, HasBindings, Stringable
         $this->bindings = [];
 
         return implode(' ', array_filter([
-          $this->name,
-          $this->getColumns(),
-          'AS',
-          $this->materialized,
-          $this->getStmt(),
-          $this->getCycleRestrict(),
-          $this->search,
-          $this->cycle,
+            $this->name,
+            $this->getColumns(),
+            'AS',
+            $this->materialized,
+            $this->getStmt(),
+            $this->getCycleRestrict(),
+            $this->search,
+            $this->cycle,
         ], '\strlen'));
 
     }

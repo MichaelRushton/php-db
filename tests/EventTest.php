@@ -13,17 +13,17 @@ use MichaelRushton\DB\Events\BeforeConnectEvent;
 use MichaelRushton\DB\Events\BeforeExecuteEvent;
 use MichaelRushton\DB\Events\BeforePrepareEvent;
 
-beforeEach(function () {
+beforeEach(function (): void {
     $this->driver = new SQLiteDriver();
 });
 
-test('before connect', function () {
+test('before connect', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (BeforeConnectEvent $event) use ($connection, &$events) {
+    $event = function (BeforeConnectEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -41,13 +41,13 @@ test('before connect', function () {
 
 });
 
-test('after connect', function () {
+test('after connect', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterConnectEvent $event) use ($connection, &$events) {
+    $event = function (AfterConnectEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -74,13 +74,13 @@ test('after connect', function () {
 
 });
 
-test('after connect exception', function () {
+test('after connect exception', function (): void {
 
     $connection = new PostgreSQLConnection(new PostgreSQLDriver());
 
     $events = 0;
 
-    $event = function (AfterConnectEvent $event) use ($connection, &$events) {
+    $event = function (AfterConnectEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -107,13 +107,13 @@ test('after connect exception', function () {
 })
 ->throws(PDOException::class);
 
-test('before exec', function () {
+test('before exec', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (BeforeExecuteEvent $event) use ($connection, &$events) {
+    $event = function (BeforeExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -137,13 +137,13 @@ test('before exec', function () {
 
 });
 
-test('after exec', function () {
+test('after exec', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterExecuteEvent $event) use ($connection, &$events) {
+    $event = function (AfterExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -176,13 +176,13 @@ test('after exec', function () {
 
 });
 
-test('after exec exception', function () {
+test('after exec exception', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterExecuteEvent $event) use ($connection, &$events) {
+    $event = function (AfterExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -215,13 +215,13 @@ test('after exec exception', function () {
 })
 ->throws(PDOException::class);
 
-test('before query', function () {
+test('before query', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (BeforeExecuteEvent $event) use ($connection, &$events) {
+    $event = function (BeforeExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -245,13 +245,13 @@ test('before query', function () {
 
 });
 
-test('after query', function () {
+test('after query', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterExecuteEvent $event) use ($connection, &$events) {
+    $event = function (AfterExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -284,13 +284,13 @@ test('after query', function () {
 
 });
 
-test('after query exception', function () {
+test('after query exception', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterExecuteEvent $event) use ($connection, &$events) {
+    $event = function (AfterExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -323,13 +323,13 @@ test('after query exception', function () {
 })
 ->throws(PDOException::class);
 
-test('before prepare', function () {
+test('before prepare', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (BeforePrepareEvent $event) use ($connection, &$events) {
+    $event = function (BeforePrepareEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -350,13 +350,13 @@ test('before prepare', function () {
 
 });
 
-test('after prepare', function () {
+test('after prepare', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterPrepareEvent $event) use ($connection, &$events) {
+    $event = function (AfterPrepareEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -386,13 +386,13 @@ test('after prepare', function () {
 
 });
 
-test('after prepare exception', function () {
+test('after prepare exception', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterPrepareEvent $event) use ($connection, &$events) {
+    $event = function (AfterPrepareEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -422,13 +422,13 @@ test('after prepare exception', function () {
 })
 ->throws(PDOException::class);
 
-test('before execute', function () {
+test('before execute', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (BeforeExecuteEvent $event) use ($connection, &$events) {
+    $event = function (BeforeExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -452,13 +452,13 @@ test('before execute', function () {
 
 });
 
-test('after execute', function () {
+test('after execute', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterExecuteEvent $event) use ($connection, &$events) {
+    $event = function (AfterExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 
@@ -491,13 +491,13 @@ test('after execute', function () {
 
 });
 
-test('after execute exception', function () {
+test('after execute exception', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     $events = 0;
 
-    $event = function (AfterExecuteEvent $event) use ($connection, &$events) {
+    $event = function (AfterExecuteEvent $event) use ($connection, &$events): void {
 
         ++$events;
 

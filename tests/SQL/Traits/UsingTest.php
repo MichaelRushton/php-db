@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLDelete;
 
-test('using', function ($table, $expected, $bindings = []) {
+test('using', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new PostgreSQLDelete(Get::connection())
@@ -23,7 +23,7 @@ test('using', function ($table, $expected, $bindings = []) {
     [['t1', 't3' => 't2'], 't1, t2 t3'],
 ]);
 
-test('using spread', function () {
+test('using spread', function (): void {
 
     expect(
         (string) new PostgreSQLDelete(Get::connection())

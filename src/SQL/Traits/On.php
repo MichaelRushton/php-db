@@ -16,8 +16,8 @@ trait On
 
     public function on(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null,
         bool $or = false,
         bool $not = false,
         ?int $num_args = null
@@ -77,24 +77,24 @@ trait On
 
     public function orOn(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->on($column1, $operator, $column2, or: true, num_args: \func_num_args());
     }
 
     public function onNot(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->on($column1, $operator, $column2, not: true, num_args: \func_num_args());
     }
 
     public function orOnNot(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->on($column1, $operator, $column2, or: true, not: true, num_args: \func_num_args());
     }

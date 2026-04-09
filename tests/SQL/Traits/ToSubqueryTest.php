@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Subquery;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('to subquery', function () {
+test('to subquery', function (): void {
 
     expect(new SQLiteSelect(Get::connection())->toSubquery())
     ->toBeInstanceOf(Subquery::class);

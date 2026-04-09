@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerUpdate;
 
-test('update', function () {
+test('update', function (): void {
 
     expect(
         (string) new SQLServerUpdate(Get::connection())

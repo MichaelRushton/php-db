@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\CTE;
 
-test('materialized', function () {
+test('materialized', function (): void {
 
     expect(
         (string) new CTE('cte', 'SELECT')
@@ -14,7 +14,7 @@ test('materialized', function () {
 
 });
 
-test('not materialized', function () {
+test('not materialized', function (): void {
 
     expect(
         (string) new CTE('cte', 'SELECT')

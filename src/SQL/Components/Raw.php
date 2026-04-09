@@ -14,7 +14,7 @@ class Raw implements HasBindings, Stringable
 
     public function __construct(
         public readonly string $expression,
-        string|int|float|bool|null|array $bindings = []
+        string|int|float|bool|array|null $bindings = []
     ) {
 
         $bindings = \is_array($bindings) ? $bindings : [$bindings];

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\Connections\SQLServerConnection;
 use MichaelRushton\DB\Drivers\SQLServerDriver;
 
-test('username', function () {
+test('username', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -16,7 +16,7 @@ test('username', function () {
 
 });
 
-test('password', function () {
+test('password', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -27,7 +27,7 @@ test('password', function () {
 
 });
 
-test('access token', function () {
+test('access token', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -38,7 +38,7 @@ test('access token', function () {
 
 });
 
-test('app', function () {
+test('app', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -49,7 +49,7 @@ test('app', function () {
 
 });
 
-test('application intent', function () {
+test('application intent', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -60,7 +60,7 @@ test('application intent', function () {
 
 });
 
-test('attach db file name', function () {
+test('attach db file name', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -71,7 +71,7 @@ test('attach db file name', function () {
 
 });
 
-test('authentication', function () {
+test('authentication', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -82,7 +82,7 @@ test('authentication', function () {
 
 });
 
-test('column encryption', function () {
+test('column encryption', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -93,7 +93,7 @@ test('column encryption', function () {
 
 });
 
-test('connection pooling', function () {
+test('connection pooling', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -104,7 +104,7 @@ test('connection pooling', function () {
 
 });
 
-test('connect retry count', function () {
+test('connect retry count', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -115,7 +115,7 @@ test('connect retry count', function () {
 
 });
 
-test('connect retry interface', function () {
+test('connect retry interface', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -126,7 +126,7 @@ test('connect retry interface', function () {
 
 });
 
-test('database', function () {
+test('database', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -137,7 +137,7 @@ test('database', function () {
 
 });
 
-test('driver', function () {
+test('driver', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -148,7 +148,7 @@ test('driver', function () {
 
 });
 
-test('encrypt', function () {
+test('encrypt', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -159,7 +159,7 @@ test('encrypt', function () {
 
 });
 
-test('failover partner', function () {
+test('failover partner', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -170,7 +170,7 @@ test('failover partner', function () {
 
 });
 
-test('key store authentication', function () {
+test('key store authentication', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -181,7 +181,7 @@ test('key store authentication', function () {
 
 });
 
-test('key store principal id', function () {
+test('key store principal id', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -192,7 +192,7 @@ test('key store principal id', function () {
 
 });
 
-test('key store secret', function () {
+test('key store secret', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -203,7 +203,7 @@ test('key store secret', function () {
 
 });
 
-test('language', function () {
+test('language', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -214,7 +214,7 @@ test('language', function () {
 
 });
 
-test('login timeout', function () {
+test('login timeout', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -225,7 +225,7 @@ test('login timeout', function () {
 
 });
 
-test('multiple active result sets', function () {
+test('multiple active result sets', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -236,7 +236,7 @@ test('multiple active result sets', function () {
 
 });
 
-test('multi subnet failover', function () {
+test('multi subnet failover', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -247,7 +247,7 @@ test('multi subnet failover', function () {
 
 });
 
-test('quoted id', function () {
+test('quoted id', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -258,7 +258,7 @@ test('quoted id', function () {
 
 });
 
-test('scrollable', function () {
+test('scrollable', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -269,7 +269,7 @@ test('scrollable', function () {
 
 });
 
-test('server', function () {
+test('server', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -280,7 +280,7 @@ test('server', function () {
 
 });
 
-test('trace file', function () {
+test('trace file', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -291,7 +291,7 @@ test('trace file', function () {
 
 });
 
-test('trace on', function () {
+test('trace on', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -302,7 +302,7 @@ test('trace on', function () {
 
 });
 
-test('transaction isolation', function () {
+test('transaction isolation', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -313,7 +313,7 @@ test('transaction isolation', function () {
 
 });
 
-test('transparent network ip resolution', function () {
+test('transparent network ip resolution', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -324,7 +324,7 @@ test('transparent network ip resolution', function () {
 
 });
 
-test('trust server certificate', function () {
+test('trust server certificate', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -335,7 +335,7 @@ test('trust server certificate', function () {
 
 });
 
-test('wsid', function () {
+test('wsid', function (): void {
 
     expect(
         new SQLServerDriver()
@@ -346,14 +346,14 @@ test('wsid', function () {
 
 });
 
-test('connection', function () {
+test('connection', function (): void {
 
     expect(new SQLServerDriver()->connection())
     ->toBeInstanceOf(SQLServerConnection::class);
 
 });
 
-test('dsn', function () {
+test('dsn', function (): void {
 
     expect(
         new SQLServerDriver()

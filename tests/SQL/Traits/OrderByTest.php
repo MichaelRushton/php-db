@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('order by', function ($column, $expected, $bindings = []) {
+test('order by', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -22,7 +22,7 @@ test('order by', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('order by spread', function () {
+test('order by spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -32,7 +32,7 @@ test('order by spread', function () {
 
 });
 
-test('order by desc', function ($column, $expected, $bindings = []) {
+test('order by desc', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -50,7 +50,7 @@ test('order by desc', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1 DESC, c2'],
 ]);
 
-test('order by desc spread', function () {
+test('order by desc spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -60,7 +60,7 @@ test('order by desc spread', function () {
 
 });
 
-test('order by nulls first', function ($column, $expected, $bindings = []) {
+test('order by nulls first', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -78,7 +78,7 @@ test('order by nulls first', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1 ASC NULLS FIRST, c2'],
 ]);
 
-test('order by nulls first spread', function () {
+test('order by nulls first spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -88,7 +88,7 @@ test('order by nulls first spread', function () {
 
 });
 
-test('order by nulls last', function ($column, $expected, $bindings = []) {
+test('order by nulls last', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -106,7 +106,7 @@ test('order by nulls last', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1 ASC NULLS LAST, c2'],
 ]);
 
-test('order by nulls last spread', function () {
+test('order by nulls last spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -116,7 +116,7 @@ test('order by nulls last spread', function () {
 
 });
 
-test('order by desc nulls first', function ($column, $expected, $bindings = []) {
+test('order by desc nulls first', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -134,7 +134,7 @@ test('order by desc nulls first', function ($column, $expected, $bindings = []) 
     [['c1', 'c2'], 'c1 DESC NULLS FIRST, c2'],
 ]);
 
-test('order by desc nulls first spread', function () {
+test('order by desc nulls first spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -144,7 +144,7 @@ test('order by desc nulls first spread', function () {
 
 });
 
-test('order by desc nulls last', function ($column, $expected, $bindings = []) {
+test('order by desc nulls last', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -162,7 +162,7 @@ test('order by desc nulls last', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1 DESC NULLS LAST, c2'],
 ]);
 
-test('order by desc nulls last spread', function () {
+test('order by desc nulls last spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())

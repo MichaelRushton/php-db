@@ -12,7 +12,6 @@ readonly class BeforeExecuteEvent
         public ConnectionInterface $connection,
         public string $query,
         public array $params = []
-    ) {
-    }
+    ) {}
 
 }

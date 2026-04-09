@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Components\Window;
 
-test('partition', function ($column, $expected, $bindings = []) {
+test('partition', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -23,7 +23,7 @@ test('partition', function ($column, $expected, $bindings = []) {
     [['p1', 'p2'], 'p1, p2'],
 ]);
 
-test('partition spread', function () {
+test('partition spread', function (): void {
 
     expect(
         (string) new Window('w1')

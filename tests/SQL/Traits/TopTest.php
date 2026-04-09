@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerSelect;
 
-test('top', function ($row_count, $expected, $bindings = []) {
+test('top', function ($row_count, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLServerSelect(Get::connection())

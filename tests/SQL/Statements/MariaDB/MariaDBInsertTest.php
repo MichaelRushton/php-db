@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBInsert;
 
-test('insert', function () {
+test('insert', function (): void {
 
     expect(
         (string) $stmt = new MariaDBInsert(Get::connection())

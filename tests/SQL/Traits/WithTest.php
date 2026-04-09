@@ -6,11 +6,11 @@ use MichaelRushton\DB\SQL\Components\CTE;
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('with', function ($stmt, $bindings = []) {
+test('with', function ($stmt, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
-        ->with('cte', $stmt, fn (CTE $cte) => $cte->materialized())
+        ->with('cte', $stmt, fn(CTE $cte) => $cte->materialized())
     )
     ->toBe("WITH cte AS MATERIALIZED (SELECT * WHERE c1 = ?) SELECT *");
 
@@ -21,10 +21,10 @@ test('with', function ($stmt, $bindings = []) {
 ->with([
     ['SELECT * WHERE c1 = ?'],
     [new Raw("SELECT * WHERE c1 = ?", 1), [1]],
-    [fn (SQLiteSelect $stmt) => $stmt->where('c1', 1), [1]],
+    [fn(SQLiteSelect $stmt) => $stmt->where('c1', 1), [1]],
 ]);
 
-test('recursive', function () {
+test('recursive', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -35,7 +35,7 @@ test('recursive', function () {
 
 });
 
-test('with multiple', function () {
+test('with multiple', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())

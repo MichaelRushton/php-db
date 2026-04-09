@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBSelect;
 
-test('sql cache', function () {
+test('sql cache', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -14,7 +14,7 @@ test('sql cache', function () {
 
 });
 
-test('sql no cache', function () {
+test('sql no cache', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())

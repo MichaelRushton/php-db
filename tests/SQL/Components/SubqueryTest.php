@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Components\Subquery;
 
-test('subquery', function () {
+test('subquery', function (): void {
 
     expect(
         (string) $subquery = new Subquery(new Raw('?', 1))

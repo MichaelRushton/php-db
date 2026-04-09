@@ -6,7 +6,7 @@ use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLSelect;
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerSelect;
 
-test('offset fetch', function ($offset, $row_count, $expected, $bindings = []) {
+test('offset fetch', function ($offset, $row_count, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLServerSelect(Get::connection())
@@ -24,7 +24,7 @@ test('offset fetch', function ($offset, $row_count, $expected, $bindings = []) {
     [new Raw('?', 1), new Raw('?', 1), '? ROWS FETCH NEXT ? ROWS', [1, 1]],
 ]);
 
-test('offset fetch with ties', function () {
+test('offset fetch with ties', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())

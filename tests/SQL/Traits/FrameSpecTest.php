@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Components\Window;
 
-test('range', function () {
+test('range', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -15,7 +15,7 @@ test('range', function () {
 
 });
 
-test('rows', function () {
+test('rows', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -25,7 +25,7 @@ test('rows', function () {
 
 });
 
-test('groups', function () {
+test('groups', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -35,7 +35,7 @@ test('groups', function () {
 
 });
 
-test('current row', function () {
+test('current row', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -45,7 +45,7 @@ test('current row', function () {
 
 });
 
-test('unbounded preceding', function () {
+test('unbounded preceding', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -55,7 +55,7 @@ test('unbounded preceding', function () {
 
 });
 
-test('unbounded following', function () {
+test('unbounded following', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -65,7 +65,7 @@ test('unbounded following', function () {
 
 });
 
-test('preceding', function ($expression, $expected, $bindings = []) {
+test('preceding', function ($expression, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -85,7 +85,7 @@ test('preceding', function ($expression, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('following', function ($expression, $expected, $bindings = []) {
+test('following', function ($expression, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -105,7 +105,7 @@ test('following', function ($expression, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('between current row', function () {
+test('between current row', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -115,7 +115,7 @@ test('between current row', function () {
 
 });
 
-test('between unbounded preceding', function () {
+test('between unbounded preceding', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -125,7 +125,7 @@ test('between unbounded preceding', function () {
 
 });
 
-test('between unbounded following', function () {
+test('between unbounded following', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -135,7 +135,7 @@ test('between unbounded following', function () {
 
 });
 
-test('between preceding', function ($expression, $expected, $bindings = []) {
+test('between preceding', function ($expression, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -155,7 +155,7 @@ test('between preceding', function ($expression, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('between following', function ($expression, $expected, $bindings = []) {
+test('between following', function ($expression, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -175,7 +175,7 @@ test('between following', function ($expression, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('and current row', function () {
+test('and current row', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -185,7 +185,7 @@ test('and current row', function () {
 
 });
 
-test('and unbounded preceding', function () {
+test('and unbounded preceding', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -195,7 +195,7 @@ test('and unbounded preceding', function () {
 
 });
 
-test('and unbounded following', function () {
+test('and unbounded following', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -205,7 +205,7 @@ test('and unbounded following', function () {
 
 });
 
-test('and preceding', function ($expression, $expected, $bindings = []) {
+test('and preceding', function ($expression, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -225,7 +225,7 @@ test('and preceding', function ($expression, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('and following', function ($expression, $expected, $bindings = []) {
+test('and following', function ($expression, $expected, $bindings = []): void {
 
     expect(
         (string) $window = new Window('w1')
@@ -245,7 +245,7 @@ test('and following', function ($expression, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('exclude current row', function () {
+test('exclude current row', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -255,7 +255,7 @@ test('exclude current row', function () {
 
 });
 
-test('exclude group', function () {
+test('exclude group', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -265,7 +265,7 @@ test('exclude group', function () {
 
 });
 
-test('exclude no others', function () {
+test('exclude no others', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -275,7 +275,7 @@ test('exclude no others', function () {
 
 });
 
-test('exclude ties', function () {
+test('exclude ties', function (): void {
 
     expect(
         (string) new Window('w1')
@@ -285,7 +285,7 @@ test('exclude ties', function () {
 
 });
 
-test('frame spec', function () {
+test('frame spec', function (): void {
 
     expect(
         (string) new Window('w1')

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteDelete;
 
-test('delete', function () {
+test('delete', function (): void {
 
     expect(
         (string) $stmt = new SQLiteDelete(Get::connection())

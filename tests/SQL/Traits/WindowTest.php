@@ -6,11 +6,11 @@ use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Components\Window;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('windows', function () {
+test('windows', function (): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
-        ->window('w1', fn (Window $window) => $window->orderBy(new Raw('?', 1)))
+        ->window('w1', fn(Window $window) => $window->orderBy(new Raw('?', 1)))
     )
     ->toBe("SELECT * WINDOW w1 AS (ORDER BY ?)");
 
@@ -19,12 +19,12 @@ test('windows', function () {
 
 });
 
-test('multiple windows', function () {
+test('multiple windows', function (): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
-        ->window('w1', fn (Window $window) => $window->orderBy(new Raw('?', 1)))
-        ->window('w2', fn (Window $window) => $window->orderBy(new Raw('?', 2)))
+        ->window('w1', fn(Window $window) => $window->orderBy(new Raw('?', 1)))
+        ->window('w2', fn(Window $window) => $window->orderBy(new Raw('?', 2)))
     )
     ->toBe("SELECT * WINDOW w1 AS (ORDER BY ?), w2 AS (ORDER BY ?)");
 

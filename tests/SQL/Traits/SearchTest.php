@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\CTE;
 
-test('search breadth', function ($column, $expected) {
+test('search breadth', function ($column, $expected): void {
 
     expect(
         (string) new CTE('cte', 'SELECT')
@@ -18,7 +18,7 @@ test('search breadth', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('search depth', function ($column, $expected) {
+test('search depth', function ($column, $expected): void {
 
     expect(
         (string) new CTE('cte', 'SELECT')

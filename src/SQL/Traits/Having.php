@@ -16,8 +16,8 @@ trait Having
 
     public function having(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null,
         bool $or = false,
         bool $not = false,
         ?int $num_args = null
@@ -59,24 +59,24 @@ trait Having
 
     public function orHaving(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
         return $this->having($column, $operator, $value, or: true, num_args: \func_num_args());
     }
 
     public function havingNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
         return $this->having($column, $operator, $value, not: true, num_args: \func_num_args());
     }
 
     public function orHavingNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
         return $this->having($column, $operator, $value, or: true, not: true, num_args: \func_num_args());
     }

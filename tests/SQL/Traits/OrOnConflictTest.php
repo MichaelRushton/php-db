@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteInsert;
 
-test('or fail', function () {
+test('or fail', function (): void {
 
     expect(
         (string) new SQLiteInsert(Get::connection())
@@ -14,7 +14,7 @@ test('or fail', function () {
 
 });
 
-test('or ignore', function () {
+test('or ignore', function (): void {
 
     expect(
         (string) new SQLiteInsert(Get::connection())
@@ -24,7 +24,7 @@ test('or ignore', function () {
 
 });
 
-test('or replace', function () {
+test('or replace', function (): void {
 
     expect(
         (string) new SQLiteInsert(Get::connection())
@@ -34,7 +34,7 @@ test('or replace', function () {
 
 });
 
-test('or roll back', function () {
+test('or roll back', function (): void {
 
     expect(
         (string) new SQLiteInsert(Get::connection())

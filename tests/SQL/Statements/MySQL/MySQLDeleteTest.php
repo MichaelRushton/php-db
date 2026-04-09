@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MySQL\MySQLDelete;
 
-test('delete', function () {
+test('delete', function (): void {
 
     expect(
         (string) new MySQLDelete(Get::connection())

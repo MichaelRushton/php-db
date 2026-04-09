@@ -16,6 +16,5 @@ readonly class AfterExecuteEvent
         public int $time,
         public ?Throwable $exception,
         public array $params = []
-    ) {
-    }
+    ) {}
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL;
 use MichaelRushton\DB\SQL\Components\Raw;
 
-test('bind', function ($value) {
+test('bind', function ($value): void {
 
     expect($raw = SQL::bind($value))
     ->toBeInstanceOf(Raw::class);
@@ -19,7 +19,7 @@ test('bind', function ($value) {
 })
 ->with(['1', 1, 1.1, true, null]);
 
-test('escape', function () {
+test('escape', function (): void {
 
     expect(SQL::escape("this is a 'test'"))
     ->toBe("this is a ''test''");

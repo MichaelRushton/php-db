@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\Connections\SQLiteConnection;
 use MichaelRushton\DB\Drivers\SQLiteDriver;
 
-beforeEach(function () {
+beforeEach(function (): void {
 
     $this->driver = new SQLiteDriver([
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -14,7 +14,7 @@ beforeEach(function () {
 
 });
 
-test('driver', function () {
+test('driver', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -23,7 +23,7 @@ test('driver', function () {
 
 });
 
-test('pdo', function () {
+test('pdo', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -32,7 +32,7 @@ test('pdo', function () {
 
 });
 
-test('exec', function () {
+test('exec', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -41,7 +41,7 @@ test('exec', function () {
 
 });
 
-test('query', function () {
+test('query', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -55,7 +55,7 @@ test('query', function () {
 
 });
 
-test('prepare', function () {
+test('prepare', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -71,7 +71,7 @@ test('prepare', function () {
 
 });
 
-test('prepare cache', function () {
+test('prepare cache', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -92,7 +92,7 @@ test('prepare cache', function () {
 
 });
 
-test('execute', function () {
+test('execute', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -106,7 +106,7 @@ test('execute', function () {
 
 });
 
-test('execute with params', function ($param, $expected) {
+test('execute with params', function ($param, $expected): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -127,7 +127,7 @@ test('execute with params', function ($param, $expected) {
     [[null], null],
 ]);
 
-test('execute with named params', function () {
+test('execute with named params', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -141,7 +141,7 @@ test('execute with named params', function () {
 
 });
 
-test('execute failure', function () {
+test('execute failure', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -153,7 +153,7 @@ test('execute failure', function () {
 
 });
 
-test('fetch', function () {
+test('fetch', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -164,7 +164,7 @@ test('fetch', function () {
 
 });
 
-test('fetch with params', function ($param, $expected) {
+test('fetch with params', function ($param, $expected): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -182,7 +182,7 @@ test('fetch with params', function ($param, $expected) {
     [[null], null],
 ]);
 
-test('fetch with mode', function () {
+test('fetch with mode', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -193,7 +193,7 @@ test('fetch with mode', function () {
 
 });
 
-test('fetch failure', function () {
+test('fetch failure', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -202,7 +202,7 @@ test('fetch failure', function () {
 
 });
 
-test('fetch all', function () {
+test('fetch all', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -213,7 +213,7 @@ test('fetch all', function () {
 
 });
 
-test('fetch all with params', function ($param, $expected) {
+test('fetch all with params', function ($param, $expected): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -231,7 +231,7 @@ test('fetch all with params', function ($param, $expected) {
     [[null], null],
 ]);
 
-test('fetch all with mode', function () {
+test('fetch all with mode', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -242,7 +242,7 @@ test('fetch all with mode', function () {
 
 });
 
-test('fetch all column', function () {
+test('fetch all column', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -251,15 +251,13 @@ test('fetch all column', function () {
 
 });
 
-test('fetch all class', function () {
+test('fetch all class', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
-    $class = new class () {
+    $class = new class {
         public $c1;
-        public function __construct(public $c2 = 0)
-        {
-        }
+        public function __construct(public $c2 = 0) {}
     };
 
     expect($object = $connection->fetchAll("SELECT 1 c1", null, PDO::FETCH_CLASS, $class::class, [2])[0])
@@ -273,7 +271,7 @@ test('fetch all class', function () {
 
 });
 
-test('fetch all failure', function () {
+test('fetch all failure', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -282,7 +280,7 @@ test('fetch all failure', function () {
 
 });
 
-test('fetch column', function () {
+test('fetch column', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -291,7 +289,7 @@ test('fetch column', function () {
 
 });
 
-test('fetch column with params', function ($param, $expected) {
+test('fetch column with params', function ($param, $expected): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -307,7 +305,7 @@ test('fetch column with params', function ($param, $expected) {
     [[null], null],
 ]);
 
-test('fetch column failure', function () {
+test('fetch column failure', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -316,15 +314,13 @@ test('fetch column failure', function () {
 
 });
 
-test('fetch object', function () {
+test('fetch object', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
-    $class = new class () {
+    $class = new class {
         public $c1;
-        public function __construct(public $c2 = 0)
-        {
-        }
+        public function __construct(public $c2 = 0) {}
     };
 
     expect($object = $connection->fetchObject("SELECT 1 c1", class: $class::class, constructorArgs: [2]))
@@ -338,7 +334,7 @@ test('fetch object', function () {
 
 });
 
-test('fetch object with params', function ($param, $expected) {
+test('fetch object with params', function ($param, $expected): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -356,7 +352,7 @@ test('fetch object with params', function ($param, $expected) {
     [[null], null],
 ]);
 
-test('fetch object failure', function () {
+test('fetch object failure', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -365,7 +361,7 @@ test('fetch object failure', function () {
 
 });
 
-test('yield', function () {
+test('yield', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -382,7 +378,7 @@ test('yield', function () {
 
 });
 
-test('yield with params', function ($param, $expected) {
+test('yield with params', function ($param, $expected): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -403,7 +399,7 @@ test('yield with params', function ($param, $expected) {
     [[null], null],
 ]);
 
-test('yield with mode', function () {
+test('yield with mode', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -417,7 +413,7 @@ test('yield with mode', function () {
 
 });
 
-test('yield failure', function () {
+test('yield failure', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -429,11 +425,11 @@ test('yield failure', function () {
 
 });
 
-test('transaction', function () {
+test('transaction', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
-    expect($connection->transaction(function (SQLiteConnection $c) use ($connection) {
+    expect($connection->transaction(function (SQLiteConnection $c) use ($connection): void {
 
         expect($c->pdo()->inTransaction())
         ->toBeTrue();
@@ -449,12 +445,12 @@ test('transaction', function () {
 
 });
 
-test('transaction rolls back on throwable', function () {
+test('transaction rolls back on throwable', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
     try {
-        $connection->transaction(fn () => throw new Exception());
+        $connection->transaction(fn() => throw new Exception());
     } finally {
 
         expect($connection->pdo()->inTransaction())

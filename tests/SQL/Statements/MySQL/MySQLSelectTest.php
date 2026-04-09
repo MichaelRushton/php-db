@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MySQL\MySQLSelect;
 
-test('select', function () {
+test('select', function (): void {
 
     expect(
         (string) new MySQLSelect(Get::connection())

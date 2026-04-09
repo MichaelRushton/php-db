@@ -8,7 +8,5 @@ use MichaelRushton\DB\Interfaces\ConnectionInterface;
 
 readonly class BeforeConnectEvent
 {
-    public function __construct(public ConnectionInterface $connection)
-    {
-    }
+    public function __construct(public ConnectionInterface $connection) {}
 }

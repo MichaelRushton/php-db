@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\Connections\MariaDBConnection;
 use MichaelRushton\DB\Drivers\MariaDBDriver;
 
-test('username', function () {
+test('username', function (): void {
 
     expect(
         new MariaDBDriver()
@@ -16,7 +16,7 @@ test('username', function () {
 
 });
 
-test('password', function () {
+test('password', function (): void {
 
     expect(
         new MariaDBDriver()
@@ -27,7 +27,7 @@ test('password', function () {
 
 });
 
-test('host', function () {
+test('host', function (): void {
 
     expect(
         new MariaDBDriver()
@@ -38,7 +38,7 @@ test('host', function () {
 
 });
 
-test('port', function () {
+test('port', function (): void {
 
     expect(
         new MariaDBDriver()
@@ -49,7 +49,7 @@ test('port', function () {
 
 });
 
-test('dbname', function () {
+test('dbname', function (): void {
 
     expect(
         new MariaDBDriver()
@@ -60,7 +60,7 @@ test('dbname', function () {
 
 });
 
-test('unix socket', function () {
+test('unix socket', function (): void {
 
     $driver = new MariaDBDriver()->unixSocket('unix_socket');
 
@@ -75,7 +75,7 @@ test('unix socket', function () {
 
 });
 
-test('charset', function () {
+test('charset', function (): void {
 
     expect(
         new MariaDBDriver()
@@ -86,14 +86,14 @@ test('charset', function () {
 
 });
 
-test('connection', function () {
+test('connection', function (): void {
 
     expect(new MariaDBDriver()->connection())
     ->toBeInstanceOf(MariaDBConnection::class);
 
 });
 
-test('dsn', function () {
+test('dsn', function (): void {
 
     expect(
         new MariaDBDriver()

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Upsert;
 
-test('upsert', function () {
+test('upsert', function (): void {
 
     expect(
         (string) $upsert = new Upsert()

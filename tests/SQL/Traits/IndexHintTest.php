@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Table;
 
-test('use index', function ($index, $expected) {
+test('use index', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -19,7 +19,7 @@ test('use index', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('use index spread', function () {
+test('use index spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -29,7 +29,7 @@ test('use index spread', function () {
 
 });
 
-test('use index for order by', function ($index, $expected) {
+test('use index for order by', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -44,7 +44,7 @@ test('use index for order by', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('use index for order by spread', function () {
+test('use index for order by spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -54,7 +54,7 @@ test('use index for order by spread', function () {
 
 });
 
-test('use index for group by', function ($index, $expected) {
+test('use index for group by', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -69,7 +69,7 @@ test('use index for group by', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('use index for group by spread', function () {
+test('use index for group by spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -79,7 +79,7 @@ test('use index for group by spread', function () {
 
 });
 
-test('ignore index', function ($index, $expected) {
+test('ignore index', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -93,7 +93,7 @@ test('ignore index', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('ignore index spread', function () {
+test('ignore index spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -103,7 +103,7 @@ test('ignore index spread', function () {
 
 });
 
-test('ignore index for order by', function ($index, $expected) {
+test('ignore index for order by', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -117,7 +117,7 @@ test('ignore index for order by', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('ignore index for order by spread', function () {
+test('ignore index for order by spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -127,7 +127,7 @@ test('ignore index for order by spread', function () {
 
 });
 
-test('ignore index for group by', function ($index, $expected) {
+test('ignore index for group by', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -141,7 +141,7 @@ test('ignore index for group by', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('ignore index for group by spread', function () {
+test('ignore index for group by spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -151,7 +151,7 @@ test('ignore index for group by spread', function () {
 
 });
 
-test('force index', function ($index, $expected) {
+test('force index', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -165,7 +165,7 @@ test('force index', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('force index spread', function () {
+test('force index spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -175,7 +175,7 @@ test('force index spread', function () {
 
 });
 
-test('force index for order by', function ($index, $expected) {
+test('force index for order by', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -189,7 +189,7 @@ test('force index for order by', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('force index for order by spread', function () {
+test('force index for order by spread', function (): void {
 
     expect(
         (string) new Table('t1')
@@ -199,7 +199,7 @@ test('force index for order by spread', function () {
 
 });
 
-test('force index for group by', function ($index, $expected) {
+test('force index for group by', function ($index, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -213,7 +213,7 @@ test('force index for group by', function ($index, $expected) {
     [['i1', 'i2'], 'i1, i2'],
 ]);
 
-test('force index for group by spread', function () {
+test('force index for group by spread', function (): void {
 
     expect(
         (string) new Table('t1')

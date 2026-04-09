@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteUpdate;
 
-test('table', function ($table, $expected, $bindings = []) {
+test('table', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteUpdate(Get::connection())
@@ -23,7 +23,7 @@ test('table', function ($table, $expected, $bindings = []) {
     [['t1', 't3' => 't2'], 't1, t2 t3'],
 ]);
 
-test('table spread', function () {
+test('table spread', function (): void {
 
     expect(
         (string) new SQLiteUpdate(Get::connection())

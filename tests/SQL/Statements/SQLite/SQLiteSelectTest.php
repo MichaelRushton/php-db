@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('select', function () {
+test('select', function (): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())

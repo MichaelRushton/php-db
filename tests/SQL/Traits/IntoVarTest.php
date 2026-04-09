@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBSelect;
 
-test('into var', function ($var, $expected) {
+test('into var', function ($var, $expected): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -18,7 +18,7 @@ test('into var', function ($var, $expected) {
     [['v1', 'v2'], '@v1, @v2'],
 ]);
 
-test('into var spread', function () {
+test('into var spread', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\Connections\SQLiteConnection;
 use MichaelRushton\DB\Drivers\SQLiteDriver;
 
-beforeEach(function () {
+beforeEach(function (): void {
 
     $this->driver = new SQLiteDriver([
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
@@ -14,7 +14,7 @@ beforeEach(function () {
 
 });
 
-test('connection', function () {
+test('connection', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -23,7 +23,7 @@ test('connection', function () {
 
 });
 
-test('exec', function () {
+test('exec', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -32,7 +32,7 @@ test('exec', function () {
 
 });
 
-test('query', function () {
+test('query', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -46,7 +46,7 @@ test('query', function () {
 
 });
 
-test('prepare', function () {
+test('prepare', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -62,7 +62,7 @@ test('prepare', function () {
 
 });
 
-test('prepare cache', function () {
+test('prepare cache', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -83,7 +83,7 @@ test('prepare cache', function () {
 
 });
 
-test('execute', function () {
+test('execute', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -97,7 +97,7 @@ test('execute', function () {
 
 });
 
-test('fetch', function () {
+test('fetch', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -108,7 +108,7 @@ test('fetch', function () {
 
 });
 
-test('fetch with mode', function () {
+test('fetch with mode', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -119,7 +119,7 @@ test('fetch with mode', function () {
 
 });
 
-test('fetch all', function () {
+test('fetch all', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -130,7 +130,7 @@ test('fetch all', function () {
 
 });
 
-test('fetch all with mode', function () {
+test('fetch all with mode', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -141,7 +141,7 @@ test('fetch all with mode', function () {
 
 });
 
-test('fetch all column', function () {
+test('fetch all column', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -150,15 +150,13 @@ test('fetch all column', function () {
 
 });
 
-test('fetch all class', function () {
+test('fetch all class', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
-    $class = new class () {
+    $class = new class {
         public $c1;
-        public function __construct(public $c2 = 0)
-        {
-        }
+        public function __construct(public $c2 = 0) {}
     };
 
     expect($object = $connection->select()->columns(['c1' => 1])->fetchAll(PDO::FETCH_CLASS, $class::class, [2])[0])
@@ -172,7 +170,7 @@ test('fetch all class', function () {
 
 });
 
-test('fetch column', function () {
+test('fetch column', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -181,15 +179,13 @@ test('fetch column', function () {
 
 });
 
-test('fetch object', function () {
+test('fetch object', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
-    $class = new class () {
+    $class = new class {
         public $c1;
-        public function __construct(public $c2 = 0)
-        {
-        }
+        public function __construct(public $c2 = 0) {}
     };
 
     expect($object = $connection->select()->columns(['c1' => 1])->fetchObject($class::class, constructorArgs: [2]))
@@ -203,7 +199,7 @@ test('fetch object', function () {
 
 });
 
-test('yield', function () {
+test('yield', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 
@@ -220,7 +216,7 @@ test('yield', function () {
 
 });
 
-test('yield with mode', function () {
+test('yield with mode', function (): void {
 
     $connection = new SQLiteConnection($this->driver);
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MySQL\MySQLReplace;
 
-test('replace', function () {
+test('replace', function (): void {
 
     expect(
         (string) $stmt = new MySQLReplace(Get::connection())

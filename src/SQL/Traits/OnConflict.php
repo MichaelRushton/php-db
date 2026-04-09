@@ -27,7 +27,7 @@ trait OnConflict
 
     public function onConflictDoUpdateSet(
         string|array $column,
-        string|Stringable|int|float|bool|null|callable $value = null,
+        string|Stringable|int|float|bool|callable|null $value = null,
         ?callable $callback = null
     ): static {
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('from', function ($table, $expected, $bindings = []) {
+test('from', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -22,7 +22,7 @@ test('from', function ($table, $expected, $bindings = []) {
     [['t1', 't3' => 't2'], 't1, t2 t3'],
 ]);
 
-test('from spread', function () {
+test('from spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())

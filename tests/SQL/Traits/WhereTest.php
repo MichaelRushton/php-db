@@ -6,14 +6,14 @@ use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Components\Where;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('empty where', function () {
+test('empty where', function (): void {
 
     expect((string) new Where())
     ->toBe('');
 
 });
 
-test('where single column', function ($column, $expected, $bindings = []) {
+test('where single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -35,7 +35,7 @@ test('where single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('where implicit operator', function ($value, $expected, $bindings = []) {
+test('where implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -57,7 +57,7 @@ test('where implicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('where explicit operator', function ($value, $expected, $bindings = []) {
+test('where explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -79,11 +79,11 @@ test('where explicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where callback', function ($column, $expected, $bindings = []) {
+test('where callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
-        ->where(function (Where $where) use ($column) {
+        ->where(function (Where $where) use ($column): void {
             $where->where($column);
         })
     )
@@ -103,7 +103,7 @@ test('where callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('or where single column', function ($column, $expected, $bindings = []) {
+test('or where single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -126,7 +126,7 @@ test('or where single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], 'c1 = ? OR c2 = ?', ['test', 1]],
 ]);
 
-test('or where implicit operator', function ($value, $expected, $bindings = []) {
+test('or where implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -149,7 +149,7 @@ test('or where implicit operator', function ($value, $expected, $bindings = []) 
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('or where explicit operator', function ($value, $expected, $bindings = []) {
+test('or where explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -172,12 +172,12 @@ test('or where explicit operator', function ($value, $expected, $bindings = []) 
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where callback', function ($column, $expected, $bindings = []) {
+test('or where callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
         ->where('c0')
-        ->orWhere(function (Where $where) use ($column) {
+        ->orWhere(function (Where $where) use ($column): void {
             $where->where($column);
         })
     )
@@ -197,7 +197,7 @@ test('or where callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('where not single column', function ($column, $expected, $bindings = []) {
+test('where not single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -219,7 +219,7 @@ test('where not single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(NOT c1 = ? AND NOT c2 = ?)', ['test', 1]],
 ]);
 
-test('where not implicit operator', function ($value, $expected, $bindings = []) {
+test('where not implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -241,7 +241,7 @@ test('where not implicit operator', function ($value, $expected, $bindings = [])
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('where not explicit operator', function ($value, $expected, $bindings = []) {
+test('where not explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -263,11 +263,11 @@ test('where not explicit operator', function ($value, $expected, $bindings = [])
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where not callback', function ($column, $expected, $bindings = []) {
+test('where not callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
-        ->whereNot(function (Where $where) use ($column) {
+        ->whereNot(function (Where $where) use ($column): void {
             $where->where($column);
         })
     )
@@ -287,7 +287,7 @@ test('where not callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'test', 'c2' => 1], '(c1 = ? AND c2 = ?)', ['test', 1]],
 ]);
 
-test('or where not single column', function ($column, $expected, $bindings = []) {
+test('or where not single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -310,7 +310,7 @@ test('or where not single column', function ($column, $expected, $bindings = [])
     [['c1' => 'test', 'c2' => 1], 'c1 = ? OR NOT c2 = ?', ['test', 1]],
 ]);
 
-test('or where not implicit operator', function ($value, $expected, $bindings = []) {
+test('or where not implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -333,7 +333,7 @@ test('or where not implicit operator', function ($value, $expected, $bindings = 
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('or where not explicit operator', function ($value, $expected, $bindings = []) {
+test('or where not explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -356,12 +356,12 @@ test('or where not explicit operator', function ($value, $expected, $bindings = 
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where not callback', function ($column, $expected, $bindings = []) {
+test('or where not callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
         ->where('c0')
-        ->orWhereNot(function (Where $where) use ($column) {
+        ->orWhereNot(function (Where $where) use ($column): void {
             $where->where($column);
         })
     )
@@ -381,7 +381,7 @@ test('or where not callback', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where in', function ($column, $expected, $bindings = []) {
+test('where in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -402,7 +402,7 @@ test('where in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where in', function ($column, $expected, $bindings = []) {
+test('or where in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -424,7 +424,7 @@ test('or where in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where not in', function ($column, $expected, $bindings = []) {
+test('where not in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -445,7 +445,7 @@ test('where not in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where not in', function ($column, $expected, $bindings = []) {
+test('or where not in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -467,7 +467,7 @@ test('or where not in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where between', function ($column, $expected, $bindings = []) {
+test('where between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -487,7 +487,7 @@ test('where between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where between', function ($column, $expected, $bindings = []) {
+test('or where between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -508,7 +508,7 @@ test('or where between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where not between', function ($column, $expected, $bindings = []) {
+test('where not between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -528,7 +528,7 @@ test('where not between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where not between', function ($column, $expected, $bindings = []) {
+test('or where not between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -549,7 +549,7 @@ test('or where not between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where null', function ($column, $expected, $bindings = []) {
+test('where null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -567,7 +567,7 @@ test('where null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where null', function ($column, $expected, $bindings = []) {
+test('or where null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -586,7 +586,7 @@ test('or where null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('where not null', function ($column, $expected, $bindings = []) {
+test('where not null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()
@@ -604,7 +604,7 @@ test('where not null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or where not null', function ($column, $expected, $bindings = []) {
+test('or where not null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $where = new Where()

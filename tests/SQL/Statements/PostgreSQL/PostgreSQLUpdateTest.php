@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLUpdate;
 
-test('update', function () {
+test('update', function (): void {
 
     expect(
         (string) $stmt = new PostgreSQLUpdate(Get::connection())

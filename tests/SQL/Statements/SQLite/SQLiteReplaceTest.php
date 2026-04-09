@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteReplace;
 
-test('replace', function () {
+test('replace', function (): void {
 
     expect(
         (string) $stmt = new SQLiteReplace(Get::connection())

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBSelect;
 
-test('into dumpfile', function ($path, $expected) {
+test('into dumpfile', function ($path, $expected): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())

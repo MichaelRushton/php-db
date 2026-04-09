@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\CTE;
 use MichaelRushton\DB\SQL\Components\Raw;
 
-test('cte', function () {
+test('cte', function (): void {
 
     expect(
         (string) $cte = new CTE('cte1', new Raw('SELECT ?', 1))

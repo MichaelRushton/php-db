@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Outfile;
 
-test('lines starting by', function ($string, $output) {
+test('lines starting by', function ($string, $output): void {
 
     expect((string) new Outfile('path')->linesStartingBy($string))
     ->toBe("'path' LINES STARTING BY '$output'");
@@ -15,7 +15,7 @@ test('lines starting by', function ($string, $output) {
     ["'", "''"],
 ]);
 
-test('lines terminated by', function ($string, $output) {
+test('lines terminated by', function ($string, $output): void {
 
     expect((string) new Outfile('path')->linesTerminatedBy($string))
     ->toBe("'path' LINES TERMINATED BY '$output'");
@@ -26,7 +26,7 @@ test('lines terminated by', function ($string, $output) {
     ["'", "''"],
 ]);
 
-test('lines', function () {
+test('lines', function (): void {
 
     expect(
         (string) new Outfile('path')

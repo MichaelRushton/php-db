@@ -15,6 +15,5 @@ readonly class AfterPrepareEvent
         public bool $success,
         public int $time,
         public ?Throwable $exception
-    ) {
-    }
+    ) {}
 }

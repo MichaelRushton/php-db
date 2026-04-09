@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBSelect;
 
-test('lock in share mode', function () {
+test('lock in share mode', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -14,7 +14,7 @@ test('lock in share mode', function () {
 
 });
 
-test('lock in share mode wait', function () {
+test('lock in share mode wait', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -24,7 +24,7 @@ test('lock in share mode wait', function () {
 
 });
 
-test('lock in share mode nowait', function () {
+test('lock in share mode nowait', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -34,7 +34,7 @@ test('lock in share mode nowait', function () {
 
 });
 
-test('lock in share mode skip locked', function () {
+test('lock in share mode skip locked', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())

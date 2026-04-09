@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLSelect;
 
-test('select', function () {
+test('select', function (): void {
 
     expect(
         (string) $stmt = new PostgreSQLSelect(Get::connection())
@@ -51,7 +51,7 @@ test('select', function () {
 
 });
 
-test('select offset fetch', function () {
+test('select offset fetch', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())

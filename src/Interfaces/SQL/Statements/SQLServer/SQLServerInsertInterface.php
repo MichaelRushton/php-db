@@ -31,8 +31,8 @@ interface SQLServerInsertInterface extends InsertInterface
     ): static;
 
     public function output(
-        string|Stringable|int|float|bool|null|array $column,
-        string|Stringable|int|float|bool|null|array ...$columns
+        string|Stringable|int|float|bool|array|null $column,
+        string|Stringable|int|float|bool|array|null ...$columns
     ): static;
 
     public function values(array $values): static;

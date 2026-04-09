@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBSelect;
 
-test('select', function () {
+test('select', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -64,7 +64,7 @@ test('select', function () {
 
 });
 
-test('select offset fetch', function () {
+test('select offset fetch', function (): void {
 
     expect(
         (string) new MariaDBSelect(Get::connection())
@@ -78,7 +78,7 @@ test('select offset fetch', function () {
         '*',
         'ORDER BY c1',
         'OFFSET 1 ROWS FETCH NEXT 2 ROWS WITH TIES',
-        'ROWS EXAMINED 1'
+        'ROWS EXAMINED 1',
     ]));
 
 });

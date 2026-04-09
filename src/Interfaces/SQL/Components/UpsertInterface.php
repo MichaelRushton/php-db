@@ -15,8 +15,8 @@ interface UpsertInterface
 
     public function whereIndex(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function onConstraint(string $constraint): static;
@@ -28,26 +28,26 @@ interface UpsertInterface
 
     public function where(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function orWhere(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function whereNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function orWhereNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function whereIn(

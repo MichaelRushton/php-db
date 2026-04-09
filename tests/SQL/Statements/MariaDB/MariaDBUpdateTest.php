@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBUpdate;
 
-test('update', function () {
+test('update', function (): void {
 
     expect(
         (string) new MariaDBUpdate(Get::connection())

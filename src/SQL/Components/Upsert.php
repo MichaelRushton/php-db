@@ -31,13 +31,13 @@ class Upsert implements UpsertInterface, HasBindings, Stringable
         $this->bindings = [];
 
         return implode(' ', array_filter([
-          $this->getColumns(),
-          $this->getWhereIndex(),
-          $this->on_constraint,
-          'DO',
-          empty($this->set) ? 'NOTHING' : 'UPDATE',
-          $this->getSet(),
-          $this->getWhere(),
+            $this->getColumns(),
+            $this->getWhereIndex(),
+            $this->on_constraint,
+            'DO',
+            empty($this->set) ? 'NOTHING' : 'UPDATE',
+            $this->getSet(),
+            $this->getWhere(),
         ], '\strlen'));
 
     }

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerSelect;
 
-test('select', function () {
+test('select', function (): void {
 
     expect(
         (string) new SQLServerSelect(Get::connection())
@@ -46,7 +46,7 @@ test('select', function () {
 
 });
 
-test('select offset fetch', function () {
+test('select offset fetch', function (): void {
 
     expect(
         (string) new SQLServerSelect(Get::connection())

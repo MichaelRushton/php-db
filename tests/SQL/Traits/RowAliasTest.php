@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MySQL\MySQLInsert;
 
-test('row alias', function ($expected = '', ...$columns) {
+test('row alias', function ($expected = '', ...$columns): void {
 
     expect(
         (string) new MySQLInsert(Get::connection())

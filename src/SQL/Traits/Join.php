@@ -15,9 +15,9 @@ trait Join
 
     public function join(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null,
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null,
         string $type = 'JOIN',
         ?int $num_args = null
     ): static {
@@ -41,19 +41,17 @@ trait Join
     }
 
     protected function condition(
-        string|Stringable|int|float|bool|null|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator,
-        string|Stringable|int|float|bool|null|array $column2,
+        string|Stringable|int|float|bool|array|callable|null $column1,
+        string|Stringable|int|float|bool|array|null $operator,
+        string|Stringable|int|float|bool|array|null $column2,
         int $num_args
     ): array {
 
         if (
             1 === $num_args
-            &&
-            (
+            && (
                 \is_string($column1)
-                ||
-                (\is_array($column1) && !\is_string(key($column1)))
+                || (\is_array($column1) && !\is_string(key($column1)))
             )
         ) {
             return ['USING', '(' . implode(', ', (array) $column1) . ')'];
@@ -67,36 +65,36 @@ trait Join
 
     public function leftJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->join($table, $column1, $operator, $column2, 'LEFT JOIN', \func_num_args());
     }
 
     public function rightJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->join($table, $column1, $operator, $column2, 'RIGHT JOIN', \func_num_args());
     }
 
     public function fullJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->join($table, $column1, $operator, $column2, 'FULL JOIN', \func_num_args());
     }
 
     public function straightJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static {
         return $this->join($table, $column1, $operator, $column2, 'STRAIGHT_JOIN', \func_num_args());
     }

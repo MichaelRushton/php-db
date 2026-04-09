@@ -28,10 +28,10 @@ class Outfile implements OutfileInterface, Stringable
     {
 
         return implode(' ', array_filter([
-          "'$this->path'",
-          $this->character_set,
-          $this->getFields(),
-          $this->getLines(),
+            "'$this->path'",
+            $this->character_set,
+            $this->getFields(),
+            $this->getLines(),
         ], '\strlen'));
 
     }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerInsert;
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerSelect;
 
-test('output', function ($column, $expected, $bindings = []) {
+test('output', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLServerInsert(Get::connection())
@@ -27,7 +27,7 @@ test('output', function ($column, $expected, $bindings = []) {
     [['c1', 'c3' => 'c2'], 'c1, c2 c3'],
 ]);
 
-test('output spread', function () {
+test('output spread', function (): void {
 
     expect(
         (string) new SQLServerInsert(Get::connection())

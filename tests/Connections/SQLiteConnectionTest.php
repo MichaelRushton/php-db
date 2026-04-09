@@ -10,7 +10,7 @@ use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteReplace;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteUpdate;
 
-test('delete', function () {
+test('delete', function (): void {
 
     $connection = new SQLiteConnection(new SQLiteDriver());
 
@@ -19,7 +19,7 @@ test('delete', function () {
 
 });
 
-test('insert', function () {
+test('insert', function (): void {
 
     $connection = new SQLiteConnection(new SQLiteDriver());
 
@@ -28,7 +28,7 @@ test('insert', function () {
 
 });
 
-test('replace', function () {
+test('replace', function (): void {
 
     $connection = new SQLiteConnection(new SQLiteDriver());
 
@@ -37,7 +37,7 @@ test('replace', function () {
 
 });
 
-test('select', function () {
+test('select', function (): void {
 
     $connection = new SQLiteConnection(new SQLiteDriver());
 
@@ -46,7 +46,7 @@ test('select', function () {
 
 });
 
-test('update', function () {
+test('update', function (): void {
 
     $connection = new SQLiteConnection(new SQLiteDriver());
 

@@ -10,26 +10,26 @@ interface HavingInterface
 {
     public function having(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function orHaving(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function havingNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function orHavingNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function havingIn(

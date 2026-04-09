@@ -6,6 +6,4 @@ namespace MichaelRushton\DB\Interfaces\SQL\Statements;
 
 use MichaelRushton\DB\Interfaces\SQL\StatementInterface;
 
-interface ReplaceInterface extends StatementInterface
-{
-}
+interface ReplaceInterface extends StatementInterface {}

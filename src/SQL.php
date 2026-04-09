@@ -12,7 +12,7 @@ use Stringable;
 abstract class SQL
 {
     public static function identifier(
-        string|Stringable|int|float|bool|null|array $value
+        string|Stringable|int|float|bool|array|null $value
     ): string|Stringable|SubqueryInterface|array {
 
         return match (true) {
@@ -26,7 +26,7 @@ abstract class SQL
     }
 
     public static function value(
-        string|Stringable|int|float|bool|null|array $value
+        string|Stringable|int|float|bool|array|null $value
     ): string|Stringable|SubqueryInterface|array {
 
         return match (true) {

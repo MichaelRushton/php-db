@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLDelete;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('returning all', function () {
+test('returning all', function (): void {
 
     expect(
         (string) new PostgreSQLDelete(Get::connection())
@@ -15,7 +15,7 @@ test('returning all', function () {
 
 });
 
-test('returning', function ($column, $expected, $bindings = []) {
+test('returning', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new PostgreSQLDelete(Get::connection())
@@ -37,7 +37,7 @@ test('returning', function ($column, $expected, $bindings = []) {
     [['c1', 'c3' => 'c2'], 'c1, c2 c3'],
 ]);
 
-test('returning spread', function () {
+test('returning spread', function (): void {
 
     expect(
         (string) new PostgreSQLDelete(Get::connection())

@@ -15,8 +15,8 @@ trait WhereIndex
 
     public function whereIndex(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
 
         if (\is_array($column)) {

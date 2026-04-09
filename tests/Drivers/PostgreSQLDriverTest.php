@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\Connections\PostgreSQLConnection;
 use MichaelRushton\DB\Drivers\PostgreSQLDriver;
 
-test('username', function () {
+test('username', function (): void {
 
     expect(
         new PostgreSQLDriver()
@@ -16,7 +16,7 @@ test('username', function () {
 
 });
 
-test('password', function () {
+test('password', function (): void {
 
     expect(
         new PostgreSQLDriver()
@@ -27,7 +27,7 @@ test('password', function () {
 
 });
 
-test('host', function () {
+test('host', function (): void {
 
     expect(
         new PostgreSQLDriver()
@@ -38,7 +38,7 @@ test('host', function () {
 
 });
 
-test('port', function () {
+test('port', function (): void {
 
     expect(
         new PostgreSQLDriver()
@@ -49,7 +49,7 @@ test('port', function () {
 
 });
 
-test('dbname', function () {
+test('dbname', function (): void {
 
     expect(
         new PostgreSQLDriver()
@@ -60,7 +60,7 @@ test('dbname', function () {
 
 });
 
-test('sslmode', function () {
+test('sslmode', function (): void {
 
     expect(
         new PostgreSQLDriver()
@@ -71,14 +71,14 @@ test('sslmode', function () {
 
 });
 
-test('connection', function () {
+test('connection', function (): void {
 
     expect(new PostgreSQLDriver()->connection())
     ->toBeInstanceOf(PostgreSQLConnection::class);
 
 });
 
-test('dsn', function () {
+test('dsn', function (): void {
 
     expect(new PostgreSQLDriver()->dsn())
     ->toBe('pgsql:host=127.0.0.1;port=5432;dbname=postgres;sslmode=prefer');

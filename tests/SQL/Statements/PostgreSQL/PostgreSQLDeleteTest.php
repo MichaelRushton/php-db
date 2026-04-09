@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLDelete;
 
-test('delete', function () {
+test('delete', function (): void {
 
     expect(
         (string) $stmt = new PostgreSQLDelete(Get::connection())

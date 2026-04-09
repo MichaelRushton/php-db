@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\Connections\SQLiteConnection;
 use MichaelRushton\DB\Drivers\SQLiteDriver;
 
-test('database', function () {
+test('database', function (): void {
 
     expect(
         new SQLiteDriver()
@@ -16,21 +16,21 @@ test('database', function () {
 
 });
 
-test('connection', function () {
+test('connection', function (): void {
 
     expect(new SQLiteDriver()->connection())
     ->toBeInstanceOf(SQLiteConnection::class);
 
 });
 
-test('pdo', function () {
+test('pdo', function (): void {
 
     expect(new SQLiteDriver()->pdo())
     ->toBeInstanceOf(PDO::class);
 
 });
 
-test('dsn', function () {
+test('dsn', function (): void {
 
     expect(
         new SQLiteDriver()

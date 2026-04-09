@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MariaDB\MariaDBReplace;
 
-test('replace', function () {
+test('replace', function (): void {
 
     expect(
         (string) $stmt = new MariaDBReplace(Get::connection())

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Table;
 
-test('table', function () {
+test('table', function (): void {
 
     expect(
         (string) new Table('t1')

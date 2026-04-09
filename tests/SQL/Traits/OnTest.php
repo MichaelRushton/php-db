@@ -6,14 +6,14 @@ use MichaelRushton\DB\SQL\Components\On;
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('empty on', function () {
+test('empty on', function (): void {
 
     expect((string) new On())
     ->toBe('');
 
 });
 
-test('on single column', function ($column, $expected, $bindings = []) {
+test('on single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -35,7 +35,7 @@ test('on single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], '(c1 = c3 AND c2 = c4)'],
 ]);
 
-test('on implicit operator', function ($value, $expected, $bindings = []) {
+test('on implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -57,7 +57,7 @@ test('on implicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('on explicit operator', function ($value, $expected, $bindings = []) {
+test('on explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -79,11 +79,11 @@ test('on explicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on callback', function ($column, $expected, $bindings = []) {
+test('on callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
-        ->on(function (On $on) use ($column) {
+        ->on(function (On $on) use ($column): void {
             $on->on($column);
         })
     )
@@ -103,7 +103,7 @@ test('on callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], '(c1 = c3 AND c2 = c4)'],
 ]);
 
-test('or on single column', function ($column, $expected, $bindings = []) {
+test('or on single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -126,7 +126,7 @@ test('or on single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], 'c1 = c3 OR c2 = c4'],
 ]);
 
-test('or on implicit operator', function ($value, $expected, $bindings = []) {
+test('or on implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -149,7 +149,7 @@ test('or on implicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('or on explicit operator', function ($value, $expected, $bindings = []) {
+test('or on explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -172,12 +172,12 @@ test('or on explicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on callback', function ($column, $expected, $bindings = []) {
+test('or on callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
         ->on('c0')
-        ->orOn(function (On $on) use ($column) {
+        ->orOn(function (On $on) use ($column): void {
             $on->on($column);
         })
     )
@@ -197,7 +197,7 @@ test('or on callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], '(c1 = c3 AND c2 = c4)'],
 ]);
 
-test('on not single column', function ($column, $expected, $bindings = []) {
+test('on not single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -219,7 +219,7 @@ test('on not single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], '(NOT c1 = c3 AND NOT c2 = c4)'],
 ]);
 
-test('on not implicit operator', function ($value, $expected, $bindings = []) {
+test('on not implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -241,7 +241,7 @@ test('on not implicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('on not explicit operator', function ($value, $expected, $bindings = []) {
+test('on not explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -263,11 +263,11 @@ test('on not explicit operator', function ($value, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on not callback', function ($column, $expected, $bindings = []) {
+test('on not callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
-        ->onNot(function (On $on) use ($column) {
+        ->onNot(function (On $on) use ($column): void {
             $on->on($column);
         })
     )
@@ -287,7 +287,7 @@ test('on not callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], '(c1 = c3 AND c2 = c4)'],
 ]);
 
-test('or on not single column', function ($column, $expected, $bindings = []) {
+test('or on not single column', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -310,7 +310,7 @@ test('or on not single column', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], 'c1 = c3 OR NOT c2 = c4'],
 ]);
 
-test('or on not implicit operator', function ($value, $expected, $bindings = []) {
+test('or on not implicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -333,7 +333,7 @@ test('or on not implicit operator', function ($value, $expected, $bindings = [])
     [new SQLiteSelect(Get::connection()), '= (SELECT *)'],
 ]);
 
-test('or on not explicit operator', function ($value, $expected, $bindings = []) {
+test('or on not explicit operator', function ($value, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -356,12 +356,12 @@ test('or on not explicit operator', function ($value, $expected, $bindings = [])
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on not callback', function ($column, $expected, $bindings = []) {
+test('or on not callback', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
         ->on('c0')
-        ->orOnNot(function (On $on) use ($column) {
+        ->orOnNot(function (On $on) use ($column): void {
             $on->on($column);
         })
     )
@@ -381,7 +381,7 @@ test('or on not callback', function ($column, $expected, $bindings = []) {
     [['c1' => 'c3', 'c2' => 'c4'], '(c1 = c3 AND c2 = c4)'],
 ]);
 
-test('on in', function ($column, $expected, $bindings = []) {
+test('on in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -402,7 +402,7 @@ test('on in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on in', function ($column, $expected, $bindings = []) {
+test('or on in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -424,7 +424,7 @@ test('or on in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on not in', function ($column, $expected, $bindings = []) {
+test('on not in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -445,7 +445,7 @@ test('on not in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on not in', function ($column, $expected, $bindings = []) {
+test('or on not in', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -467,7 +467,7 @@ test('or on not in', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on between', function ($column, $expected, $bindings = []) {
+test('on between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -487,7 +487,7 @@ test('on between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on not between', function ($column, $expected, $bindings = []) {
+test('on not between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -507,7 +507,7 @@ test('on not between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on between', function ($column, $expected, $bindings = []) {
+test('or on between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -528,7 +528,7 @@ test('or on between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on not between', function ($column, $expected, $bindings = []) {
+test('or on not between', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -549,7 +549,7 @@ test('or on not between', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on null', function ($column, $expected, $bindings = []) {
+test('on null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -567,7 +567,7 @@ test('on null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on null', function ($column, $expected, $bindings = []) {
+test('or on null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -586,7 +586,7 @@ test('or on null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('on not null', function ($column, $expected, $bindings = []) {
+test('on not null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()
@@ -604,7 +604,7 @@ test('on not null', function ($column, $expected, $bindings = []) {
     [new SQLiteSelect(Get::connection()), '(SELECT *)'],
 ]);
 
-test('or on not null', function ($column, $expected, $bindings = []) {
+test('or on not null', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $on = new On()

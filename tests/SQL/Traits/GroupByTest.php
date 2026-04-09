@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('group by', function ($column, $expected, $bindings = []) {
+test('group by', function ($column, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -22,7 +22,7 @@ test('group by', function ($column, $expected, $bindings = []) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('group by spread', function () {
+test('group by spread', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -32,7 +32,7 @@ test('group by spread', function () {
 
 });
 
-test('group by with rollup', function () {
+test('group by with rollup', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())

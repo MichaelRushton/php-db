@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('limit', function ($row_count, $expected, $bindings = []) {
+test('limit', function ($row_count, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -23,7 +23,7 @@ test('limit', function ($row_count, $expected, $bindings = []) {
     [new Raw('?', 1), '?', [1]],
 ]);
 
-test('limit offset', function ($offset, $expected, $bindings = []) {
+test('limit offset', function ($offset, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())

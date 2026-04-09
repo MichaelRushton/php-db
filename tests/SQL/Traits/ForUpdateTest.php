@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLSelect;
 
-test('for update', function ($table, $expected) {
+test('for update', function ($table, $expected): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -19,7 +19,7 @@ test('for update', function ($table, $expected) {
     [['t1', 't2'], ' OF t1, t2'],
 ]);
 
-test('for update spread', function () {
+test('for update spread', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -29,7 +29,7 @@ test('for update spread', function () {
 
 });
 
-test('for update wait', function () {
+test('for update wait', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -39,7 +39,7 @@ test('for update wait', function () {
 
 });
 
-test('for update nowait', function ($table, $expected) {
+test('for update nowait', function ($table, $expected): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -54,7 +54,7 @@ test('for update nowait', function ($table, $expected) {
     [['t1', 't2'], ' OF t1, t2'],
 ]);
 
-test('for update nowait spread', function () {
+test('for update nowait spread', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -64,7 +64,7 @@ test('for update nowait spread', function () {
 
 });
 
-test("for update skip locked", function ($table, $expected) {
+test("for update skip locked", function ($table, $expected): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -79,7 +79,7 @@ test("for update skip locked", function ($table, $expected) {
     [['t1', 't2'], ' OF t1, t2'],
 ]);
 
-test('for update skip locked spread', function () {
+test('for update skip locked spread', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLSelect;
 
-test('for key share', function ($table, $expected) {
+test('for key share', function ($table, $expected): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -19,7 +19,7 @@ test('for key share', function ($table, $expected) {
     [['t1', 't2'], ' OF t1, t2'],
 ]);
 
-test('for key share spread', function () {
+test('for key share spread', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -29,7 +29,7 @@ test('for key share spread', function () {
 
 });
 
-test('for key share nowait', function ($table, $expected) {
+test('for key share nowait', function ($table, $expected): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -44,7 +44,7 @@ test('for key share nowait', function ($table, $expected) {
     [['t1', 't2'], ' OF t1, t2'],
 ]);
 
-test('for key share nowait spread', function () {
+test('for key share nowait spread', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -54,7 +54,7 @@ test('for key share nowait spread', function () {
 
 });
 
-test("for key share skip locked", function ($table, $expected) {
+test("for key share skip locked", function ($table, $expected): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())
@@ -69,7 +69,7 @@ test("for key share skip locked", function ($table, $expected) {
     [['t1', 't2'], ' OF t1, t2'],
 ]);
 
-test('for key share skip locked spread', function () {
+test('for key share skip locked spread', function (): void {
 
     expect(
         (string) new PostgreSQLSelect(Get::connection())

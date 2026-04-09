@@ -16,8 +16,8 @@ trait Where
 
     public function where(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null,
         bool $or = false,
         bool $not = false,
         ?int $num_args = null
@@ -59,24 +59,24 @@ trait Where
 
     public function orWhere(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
         return $this->where($column, $operator, $value, or: true, num_args: \func_num_args());
     }
 
     public function whereNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
         return $this->where($column, $operator, $value, not: true, num_args: \func_num_args());
     }
 
     public function orWhereNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static {
         return $this->where($column, $operator, $value, or: true, not: true, num_args: \func_num_args());
     }

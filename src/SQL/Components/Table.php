@@ -24,19 +24,18 @@ class Table implements TableInterface, Stringable
 
     public function __construct(
         public readonly string $name
-    ) {
-    }
+    ) {}
 
     public function __toString(): string
     {
 
         return implode(' ', array_filter([
-          $this->only,
-          $this->name,
-          $this->getPartition(),
-          $this->for_portion_of,
-          $this->alias,
-          $this->getIndexHint(),
+            $this->only,
+            $this->name,
+            $this->getPartition(),
+            $this->for_portion_of,
+            $this->alias,
+            $this->getIndexHint(),
         ]));
 
     }

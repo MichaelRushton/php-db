@@ -10,7 +10,7 @@ use MichaelRushton\DB\Drivers\SQLServerDriver;
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteInsert;
 
-test('empty values', function ($driver, $expected) {
+test('empty values', function ($driver, $expected): void {
 
     expect(
         (string) $driver->connection()->insert()
@@ -27,7 +27,7 @@ test('empty values', function ($driver, $expected) {
     [new SQLServerDriver(), 'DEFAULT VALUES'],
 ]);
 
-test('values', function ($values, $expected, $bindings = []) {
+test('values', function ($values, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteInsert(Get::connection())
@@ -44,7 +44,7 @@ test('values', function ($values, $expected, $bindings = []) {
     [[['test'], [1]], '?), (?', ['test', 1]],
 ]);
 
-test('values with columns', function () {
+test('values with columns', function (): void {
 
     expect(
         (string) $stmt = new SQLiteInsert(Get::connection())

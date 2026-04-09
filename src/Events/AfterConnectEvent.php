@@ -14,6 +14,5 @@ readonly class AfterConnectEvent
         public bool $success,
         public int $time,
         public ?Throwable $exception
-    ) {
-    }
+    ) {}
 }

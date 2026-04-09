@@ -19,8 +19,8 @@ class Predicate implements HasBindings, Stringable
 
     public function __construct(
         string|Stringable|int|float|bool $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null,
         ?int $num_args = null
     ) {
 
@@ -56,7 +56,7 @@ class Predicate implements HasBindings, Stringable
 
         $this->bindings = [];
 
-        $predicate = $this->column  . ' ' . $this->operator . ' ' . $this->value();
+        $predicate = $this->column . ' ' . $this->operator . ' ' . $this->value();
 
         foreach ([$this->column, $this->value] as $part) {
 

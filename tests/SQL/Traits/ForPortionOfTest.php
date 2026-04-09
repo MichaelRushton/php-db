@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Table;
 
-test('for portion of', function ($start, $end) {
+test('for portion of', function ($start, $end): void {
 
     expect(
         (string) new Table('t1')

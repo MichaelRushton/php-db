@@ -9,7 +9,7 @@ use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerInsert;
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerSelect;
 use MichaelRushton\DB\SQL\Statements\SQLServer\SQLServerUpdate;
 
-test('delete', function () {
+test('delete', function (): void {
 
     $connection = new SQLServerConnection(new SQLServerDriver());
 
@@ -18,7 +18,7 @@ test('delete', function () {
 
 });
 
-test('insert', function () {
+test('insert', function (): void {
 
     $connection = new SQLServerConnection(new SQLServerDriver());
 
@@ -27,7 +27,7 @@ test('insert', function () {
 
 });
 
-test('select', function () {
+test('select', function (): void {
 
     $connection = new SQLServerConnection(new SQLServerDriver());
 
@@ -36,7 +36,7 @@ test('select', function () {
 
 });
 
-test('update', function () {
+test('update', function (): void {
 
     $connection = new SQLServerConnection(new SQLServerDriver());
 

@@ -25,17 +25,16 @@ class Window implements WindowInterface, HasBindings, Stringable
 
     public function __construct(
         public readonly string $name
-    ) {
-    }
+    ) {}
 
     protected function getSpec(): string
     {
 
         return implode(' ', array_filter([
-          $this->spec_name,
-          $this->getPartitionBy(),
-          $this->getOrderBy(),
-          $this->getFrameSpec(),
+            $this->spec_name,
+            $this->getPartitionBy(),
+            $this->getOrderBy(),
+            $this->getFrameSpec(),
         ], '\strlen'));
 
     }

@@ -40,37 +40,37 @@ interface MySQLDeleteInterface extends DeleteInterface
 
     public function join(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static;
 
     public function leftJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static;
 
     public function rightJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static;
 
     public function fullJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static;
 
     public function straightJoin(
         string|Stringable|array $table,
-        string|Stringable|int|float|bool|null|array|callable $column1 = null,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column2 = null
+        string|Stringable|int|float|bool|array|callable|null $column1 = null,
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column2 = null
     ): static;
 
     public function crossJoin(string|Stringable|array $table): static;
@@ -85,26 +85,26 @@ interface MySQLDeleteInterface extends DeleteInterface
 
     public function where(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function orWhere(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function whereNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function orWhereNot(
         string|Stringable|int|float|bool|array|callable $column,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $value = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $value = null
     ): static;
 
     public function whereIn(

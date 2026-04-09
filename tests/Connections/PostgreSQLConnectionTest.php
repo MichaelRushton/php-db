@@ -9,7 +9,7 @@ use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLInsert;
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLSelect;
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLUpdate;
 
-test('delete', function () {
+test('delete', function (): void {
 
     $connection = new PostgreSQLConnection(new PostgreSQLDriver());
 
@@ -18,7 +18,7 @@ test('delete', function () {
 
 });
 
-test('insert', function () {
+test('insert', function (): void {
 
     $connection = new PostgreSQLConnection(new PostgreSQLDriver());
 
@@ -27,7 +27,7 @@ test('insert', function () {
 
 });
 
-test('select', function () {
+test('select', function (): void {
 
     $connection = new PostgreSQLConnection(new PostgreSQLDriver());
 
@@ -36,7 +36,7 @@ test('select', function () {
 
 });
 
-test('update', function () {
+test('update', function (): void {
 
     $connection = new PostgreSQLConnection(new PostgreSQLDriver());
 

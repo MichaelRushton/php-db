@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Outfile;
 
-test('outfile', function () {
+test('outfile', function (): void {
 
     expect(
         (string) new Outfile('path')

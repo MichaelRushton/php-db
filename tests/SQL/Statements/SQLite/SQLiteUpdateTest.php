@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteUpdate;
 
-test('update', function () {
+test('update', function (): void {
 
     expect(
         (string) $stmt = new SQLiteUpdate(Get::connection())

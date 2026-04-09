@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Window;
 
-test('window', function () {
+test('window', function (): void {
 
     expect(
         (string) new Window('w1')

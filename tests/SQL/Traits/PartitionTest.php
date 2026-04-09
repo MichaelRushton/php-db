@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\Table;
 
-test('partition', function ($partition, $expected) {
+test('partition', function ($partition, $expected): void {
 
     expect(
         (string) new Table('t1')
@@ -18,7 +18,7 @@ test('partition', function ($partition, $expected) {
     [['p1', 'p2'], 'p1, p2'],
 ]);
 
-test('partition spread', function () {
+test('partition spread', function (): void {
 
     expect(
         (string) new Table('t1')

@@ -5,7 +5,7 @@ declare(strict_types=1);
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteUpdate;
 
-test('set', function ($column, $value, $expected, $bindings = []) {
+test('set', function ($column, $value, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteUpdate(Get::connection())

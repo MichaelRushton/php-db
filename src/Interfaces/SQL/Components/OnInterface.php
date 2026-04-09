@@ -10,26 +10,26 @@ interface OnInterface
 {
     public function on(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column12 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column12 = null
     ): static;
 
     public function orOn(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column12 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column12 = null
     ): static;
 
     public function onNot(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column12 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column12 = null
     ): static;
 
     public function orOnNot(
         string|Stringable|int|float|bool|array|callable $column1,
-        string|Stringable|int|float|bool|null|array $operator = null,
-        string|Stringable|int|float|bool|null|array $column12 = null
+        string|Stringable|int|float|bool|array|null $operator = null,
+        string|Stringable|int|float|bool|array|null $column12 = null
     ): static;
 
     public function onIn(

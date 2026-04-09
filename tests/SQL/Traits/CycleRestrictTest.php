@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Components\CTE;
 
-test('cycle restrict', function ($column, $expected) {
+test('cycle restrict', function ($column, $expected): void {
 
     expect(
         (string) new CTE('cte', 'SELECT')
@@ -18,7 +18,7 @@ test('cycle restrict', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('cycle restrict spread', function () {
+test('cycle restrict spread', function (): void {
 
     expect(
         (string) new CTE('cte', 'SELECT')

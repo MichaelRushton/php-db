@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\MySQL\MySQLInsert;
 
-test('insert', function () {
+test('insert', function (): void {
 
     expect(
         (string) $stmt = new MySQLInsert(Get::connection())

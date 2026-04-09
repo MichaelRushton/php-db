@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLInsert;
 
-test('overriding system value', function () {
+test('overriding system value', function (): void {
 
     expect(
         (string) new PostgreSQLInsert(Get::connection())
@@ -14,7 +14,7 @@ test('overriding system value', function () {
 
 });
 
-test('overriding user value', function () {
+test('overriding user value', function (): void {
 
     expect(
         (string) new PostgreSQLInsert(Get::connection())

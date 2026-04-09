@@ -39,7 +39,7 @@ interface MariaDBInsertInterface extends InsertInterface
     ): static;
 
     public function returning(
-        string|Stringable|int|float|bool|null|array $column = '*',
-        string|Stringable|int|float|bool|null|array ...$columns
+        string|Stringable|int|float|bool|array|null $column = '*',
+        string|Stringable|int|float|bool|array|null ...$columns
     ): static;
 }

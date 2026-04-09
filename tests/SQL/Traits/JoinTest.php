@@ -6,7 +6,7 @@ use MichaelRushton\DB\SQL\Components\On;
 use MichaelRushton\DB\SQL\Components\Raw;
 use MichaelRushton\DB\SQL\Statements\SQLite\SQLiteSelect;
 
-test('join', function ($table, $expected, $bindings = []) {
+test('join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -26,7 +26,7 @@ test('join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a JOIN t2 b'],
 ]);
 
-test('join using', function ($column, $expected) {
+test('join using', function ($column, $expected): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -40,7 +40,7 @@ test('join using', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('join on implicit operator', function () {
+test('join on implicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -50,7 +50,7 @@ test('join on implicit operator', function () {
 
 });
 
-test('join on explicit operator', function () {
+test('join on explicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -60,7 +60,7 @@ test('join on explicit operator', function () {
 
 });
 
-test('join on array', function () {
+test('join on array', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -73,11 +73,11 @@ test('join on array', function () {
 
 });
 
-test('join on closure', function () {
+test('join on closure', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
-        ->join('t1', function (On $join) {
+        ->join('t1', function (On $join): void {
             $join->on('c1');
         })
     )
@@ -85,7 +85,7 @@ test('join on closure', function () {
 
 });
 
-test('left join', function ($table, $expected, $bindings = []) {
+test('left join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -105,7 +105,7 @@ test('left join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a LEFT JOIN t2 b'],
 ]);
 
-test('left join using', function ($column, $expected) {
+test('left join using', function ($column, $expected): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -119,7 +119,7 @@ test('left join using', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('left join on implicit operator', function () {
+test('left join on implicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -129,7 +129,7 @@ test('left join on implicit operator', function () {
 
 });
 
-test('left join on explicit operator', function () {
+test('left join on explicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -139,7 +139,7 @@ test('left join on explicit operator', function () {
 
 });
 
-test('left join on array', function () {
+test('left join on array', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -152,11 +152,11 @@ test('left join on array', function () {
 
 });
 
-test('left join on closure', function () {
+test('left join on closure', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
-        ->leftJoin('t1', function (On $join) {
+        ->leftJoin('t1', function (On $join): void {
             $join->on('c1');
         })
     )
@@ -164,7 +164,7 @@ test('left join on closure', function () {
 
 });
 
-test('right join', function ($table, $expected, $bindings = []) {
+test('right join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -184,7 +184,7 @@ test('right join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a RIGHT JOIN t2 b'],
 ]);
 
-test('right join using', function ($column, $expected) {
+test('right join using', function ($column, $expected): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -198,7 +198,7 @@ test('right join using', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('right join on implicit operator', function () {
+test('right join on implicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -208,7 +208,7 @@ test('right join on implicit operator', function () {
 
 });
 
-test('right join on explicit operator', function () {
+test('right join on explicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -218,7 +218,7 @@ test('right join on explicit operator', function () {
 
 });
 
-test('right join on array', function () {
+test('right join on array', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -231,11 +231,11 @@ test('right join on array', function () {
 
 });
 
-test('right join on closure', function () {
+test('right join on closure', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
-        ->rightJoin('t1', function (On $join) {
+        ->rightJoin('t1', function (On $join): void {
             $join->on('c1');
         })
     )
@@ -243,7 +243,7 @@ test('right join on closure', function () {
 
 });
 
-test('full join', function ($table, $expected, $bindings = []) {
+test('full join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -263,7 +263,7 @@ test('full join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a FULL JOIN t2 b'],
 ]);
 
-test('full join using', function ($column, $expected) {
+test('full join using', function ($column, $expected): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -277,7 +277,7 @@ test('full join using', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('full join on implicit operator', function () {
+test('full join on implicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -287,7 +287,7 @@ test('full join on implicit operator', function () {
 
 });
 
-test('full join on explicit operator', function () {
+test('full join on explicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -297,7 +297,7 @@ test('full join on explicit operator', function () {
 
 });
 
-test('full join on array', function () {
+test('full join on array', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -310,11 +310,11 @@ test('full join on array', function () {
 
 });
 
-test('full join on closure', function () {
+test('full join on closure', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
-        ->fullJoin('t1', function (On $join) {
+        ->fullJoin('t1', function (On $join): void {
             $join->on('c1');
         })
     )
@@ -322,7 +322,7 @@ test('full join on closure', function () {
 
 });
 
-test('straight join', function ($table, $expected, $bindings = []) {
+test('straight join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -342,7 +342,7 @@ test('straight join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a STRAIGHT_JOIN t2 b'],
 ]);
 
-test('straight join using', function ($column, $expected) {
+test('straight join using', function ($column, $expected): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -356,7 +356,7 @@ test('straight join using', function ($column, $expected) {
     [['c1', 'c2'], 'c1, c2'],
 ]);
 
-test('straight join on implicit operator', function () {
+test('straight join on implicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -366,7 +366,7 @@ test('straight join on implicit operator', function () {
 
 });
 
-test('straight join on explicit operator', function () {
+test('straight join on explicit operator', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -376,7 +376,7 @@ test('straight join on explicit operator', function () {
 
 });
 
-test('straight join on array', function () {
+test('straight join on array', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
@@ -389,11 +389,11 @@ test('straight join on array', function () {
 
 });
 
-test('straight join on closure', function () {
+test('straight join on closure', function (): void {
 
     expect(
         (string) new SQLiteSelect(Get::connection())
-        ->straightJoin('t1', function (On $join) {
+        ->straightJoin('t1', function (On $join): void {
             $join->on('c1');
         })
     )
@@ -401,7 +401,7 @@ test('straight join on closure', function () {
 
 });
 
-test('cross join', function ($table, $expected, $bindings = []) {
+test('cross join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -421,7 +421,7 @@ test('cross join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a CROSS JOIN t2 b'],
 ]);
 
-test('natural join', function ($table, $expected, $bindings = []) {
+test('natural join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -441,7 +441,7 @@ test('natural join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a NATURAL JOIN t2 b'],
 ]);
 
-test('natural left join', function ($table, $expected, $bindings = []) {
+test('natural left join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -461,7 +461,7 @@ test('natural left join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a NATURAL LEFT JOIN t2 b'],
 ]);
 
-test('natural right join', function ($table, $expected, $bindings = []) {
+test('natural right join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())
@@ -481,7 +481,7 @@ test('natural right join', function ($table, $expected, $bindings = []) {
     [['a' => 't1', 'b' => 't2'], 't1 a NATURAL RIGHT JOIN t2 b'],
 ]);
 
-test('natural full join', function ($table, $expected, $bindings = []) {
+test('natural full join', function ($table, $expected, $bindings = []): void {
 
     expect(
         (string) $stmt = new SQLiteSelect(Get::connection())

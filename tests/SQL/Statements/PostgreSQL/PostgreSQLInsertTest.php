@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use MichaelRushton\DB\SQL\Statements\PostgreSQL\PostgreSQLInsert;
 
-test('insert', function () {
+test('insert', function (): void {
 
     expect(
         (string) $stmt = new PostgreSQLInsert(Get::connection())
