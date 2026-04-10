@@ -4,10 +4,8 @@ declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
-use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 return (new Config())
-    ->setParallelConfig(ParallelConfigFactory::detect()) // @TODO 4.0 no need to call this manually
     ->setRiskyAllowed(true)
     ->setRules([
         '@auto' => true,
@@ -27,6 +25,6 @@ return (new Config())
             // ->notPath([/* ... */])
             // 💡 extra configs
             // ->ignoreDotFiles(false) // true by default in v3, false in v4 or future mode
-            // ->ignoreVCSIgnored(true) // true by default
+            // ->ignoreVCS(true) // true by default
     )
 ;

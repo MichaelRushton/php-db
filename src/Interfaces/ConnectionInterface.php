@@ -14,7 +14,6 @@ use PDOStatement;
 
 interface ConnectionInterface
 {
-
     public function beforeConnect(callable $callback): static;
 
     public function afterConnect(callable $callback): static;
