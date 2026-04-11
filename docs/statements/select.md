@@ -1992,3 +1992,22 @@ $stmt->when($var, if_false: function ($stmt, $var)
     $stmt->whereNull('c1');
 });
 ```
+
+### pipe
+
+```php
+$rows = $stmt->pipe(function ($stmt)
+{
+    return $stmt->limit(10)->fetchAll();
+});
+```
+
+### through
+
+```php
+$rows = $stmt->through(function ($stmt)
+{
+    $stmt->limit(10);
+})
+->fetchAll();
+```
