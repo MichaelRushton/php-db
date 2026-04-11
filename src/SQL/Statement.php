@@ -9,6 +9,8 @@ use MichaelRushton\DB\Interfaces\ConnectionInterface;
 use MichaelRushton\DB\Interfaces\SQL\StatementInterface;
 use MichaelRushton\DB\Interfaces\SQL\Traits\HasBindings;
 use MichaelRushton\DB\SQL\Traits\Bindings;
+use MichaelRushton\DB\SQL\Traits\Pipe;
+use MichaelRushton\DB\SQL\Traits\Through;
 use MichaelRushton\DB\SQL\Traits\When;
 use PDO;
 use PDOStatement;
@@ -17,6 +19,8 @@ use Stringable;
 abstract class Statement implements StatementInterface, HasBindings, Stringable
 {
     use Bindings;
+    use Pipe;
+    use Through;
     use When;
 
     public function __construct(
