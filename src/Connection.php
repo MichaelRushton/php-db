@@ -7,7 +7,6 @@ namespace MichaelRushton\DB;
 use Generator;
 use MichaelRushton\DB\Interfaces\ConnectionInterface;
 use MichaelRushton\DB\Interfaces\DriverInterface;
-use MichaelRushton\DB\Traits\HasEvents;
 use PDO;
 use PDOStatement;
 use Throwable;
@@ -15,8 +14,6 @@ use WeakReference;
 
 abstract class Connection implements ConnectionInterface
 {
-    use HasEvents;
-
     protected PDO $pdo;
     protected array $cache = [];
 
@@ -31,62 +28,12 @@ abstract class Connection implements ConnectionInterface
 
     public function pdo(): PDO
     {
-
-        if (isset($this->pdo)) {
-            return $this->pdo;
-        }
-
-        $this->runBeforeConnect();
-
-        try {
-
-            $time = -hrtime(true);
-
-            $this->pdo = $this->driver->pdo();
-
-            $time += hrtime(true);
-
-            return $this->pdo;
-
-        } catch (Throwable $e) {
-
-            $time += hrtime(true);
-
-            throw $e;
-
-        } finally {
-            $this->runAfterConnect(isset($this->pdo), $time, $e ?? null);
-        }
-
+        return $this->pdo ??= $this->driver()->pdo();
     }
 
     public function exec(string $statement): int|false
     {
-
-        $pdo = $this->pdo();
-
-        $this->runBeforeExecute($statement);
-
-        try {
-
-            $time = -hrtime(true);
-
-            $count = $pdo->exec($statement);
-
-            $time += hrtime(true);
-
-            return $count;
-
-        } catch (Throwable $e) {
-
-            $time += hrtime(true);
-
-            throw $e;
-
-        } finally {
-            $this->runAfterExecute($statement, false !== ($count ?? false), $time, $e ?? null);
-        }
-
+        return $this->pdo()->exec($statement);
     }
 
     public function query(
@@ -94,31 +41,7 @@ abstract class Connection implements ConnectionInterface
         ?int $fetchMode = null,
         mixed ...$fetchModeArgs
     ): PDOStatement|false {
-
-        $pdo = $this->pdo();
-
-        $this->runBeforeExecute($query);
-
-        try {
-
-            $time = -hrtime(true);
-
-            $stmt = $pdo->query($query, $fetchMode, ...$fetchModeArgs);
-
-            $time += hrtime(true);
-
-            return $stmt;
-
-        } catch (Throwable $e) {
-
-            $time += hrtime(true);
-
-            throw $e;
-
-        } finally {
-            $this->runAfterExecute($query, !empty($stmt), $time, $e ?? null);
-        }
-
+        return $this->pdo()->query($query, $fetchMode, ...$fetchModeArgs);
     }
 
     public function prepare(
@@ -132,33 +55,11 @@ abstract class Connection implements ConnectionInterface
             return $stmt;
         }
 
-        $pdo = $this->pdo();
-
-        $this->runBeforePrepare($query);
-
-        try {
-
-            $time = -hrtime(true);
-
-            $stmt = $pdo->prepare($query, $options);
-
-            $time += hrtime(true);
-
-            if ($stmt) {
-                $this->cache[$key] = WeakReference::create($stmt);
-            }
-
-            return $stmt;
-
-        } catch (Throwable $e) {
-
-            $time += hrtime(true);
-
-            throw $e;
-
-        } finally {
-            $this->runAfterPrepare($query, !empty($stmt), $time, $e ?? null);
+        if ($stmt = $this->pdo()->prepare($query, $options)) {
+            $this->cache[$key] = WeakReference::create($stmt);
         }
+
+        return $stmt;
 
     }
 
@@ -171,9 +72,7 @@ abstract class Connection implements ConnectionInterface
             return false;
         }
 
-        $params = (array) $params;
-
-        foreach ($params as $param => $value) {
+        foreach ((array) $params as $param => $value) {
 
             $stmt->bindValue(\is_string($param) ? $param : $param + 1, $value, match (\gettype($value)) {
                 'integer' => PDO::PARAM_INT,
@@ -183,28 +82,11 @@ abstract class Connection implements ConnectionInterface
             });
 
         }
-
-        $this->runBeforeExecute($query, $params);
-
-        try {
-
-            $time = -hrtime(true);
-
-            $success = $stmt->execute();
-
-            $time += hrtime(true);
-
-            return $success ? $stmt : false;
-
-        } catch (Throwable $e) {
-
-            $time += hrtime(true);
-
-            throw $e;
-
-        } finally {
-            $this->runAfterExecute($query, $success ?? false, $time, $e ?? null, $params);
+        if (!$stmt->execute()) {
+            return false;
         }
+
+        return $stmt;
 
     }
 
