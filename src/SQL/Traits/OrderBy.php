@@ -18,7 +18,6 @@ trait OrderBy
         string $direction = '',
     ): static {
 
-
         $column = \is_array($column) ? $column : [$column];
 
         foreach ($column as $column) {
