@@ -5,7 +5,7 @@ A PHP library to query a database.
 ## Installation
 
 ```bash
-composer require michaelrushton/php-db
+composer require michaelrushton/db
 ```
 
 ## Documentation

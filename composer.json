@@ -1,5 +1,5 @@
 {
-    "name": "michaelrushton/php-db",
+    "name": "michaelrushton/db",
     "description": "A PHP library to query a database.",
     "license": "MIT",
     "require": {
@@ -11,7 +11,7 @@
         }
     },
     "require-dev": {
-        "pestphp/pest": "^5.0",
+        "pestphp/pest": "^5.1",
         "friendsofphp/php-cs-fixer": "^3.95"
     },
     "config": {
